@@ -40,14 +40,12 @@ function RegisterForm() {
     yup.reach(registerSchema, inputName)
       .validate(inputValue)
       .then(() => {
-        console.log(formErrors)
         setFormErrors({
           ...formErrors,
           [inputName]: false
         })
       })
       .catch(() => {
-        console.log(formErrors)
         setFormErrors({
           ...formErrors,
           [inputName]: true
