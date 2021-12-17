@@ -4,10 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose"
-  },
-  "jest": {
-    "testEnvironment": "node"
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "latest": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run",
+    "resetdb": "npm run rollback && npm run latest && npm run seed",
+    "cleanup": "knex seed:run --specific=01-cleanup.js",
+    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand"
   },
   "repository": {
     "type": "git",
