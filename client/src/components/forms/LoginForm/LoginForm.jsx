@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react"
-import loginSchema from "../../schemas/login-form-schema"
+import { loginSchema } from "../../../schemas"
 
 const initialFormValues = {
   username: "",
   password: ""
 }
 
-function LoginForm() {
+export function LoginForm() {
   const [formValues, setFormValues] = useState(initialFormValues)
   const [submitDisabled, setSubmitDisabled] = useState(true)
 

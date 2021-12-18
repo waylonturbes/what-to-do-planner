@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react"
-import registerInitialValues from "./registerInitialValues.json"
-import registerSchema from "../../schemas/registerSchema"
 import * as yup from "yup"
 
-function RegisterForm() {
+import registerInitialValues from "./registerInitialValues.json"
+import { registerSchema } from "../../../schemas"
+
+export function RegisterForm() {
   // State
   const [formValues, setFormValues] = useState(registerInitialValues)
   const [submitDisabled, setSubmitDisabled] = useState(true)
