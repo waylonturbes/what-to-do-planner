@@ -10,15 +10,17 @@ export const registerSchema = yup.object().shape({
   username: yup
     .string()
     .trim()
-    .required(),
+    .required("username is required"),
   email: yup
     .string()
-    .email()
-    .required(),
+    .trim()
+    .email("invalid email address")
+    .required("email address is required"),
   password: yup
     .string()
-    .required()
-    .min(6)
+    .trim()
+    .required("password is required")
+    .min(6, "password must contain at least 6 characters")
 })
 
 export default registerSchema;
