@@ -1,12 +1,17 @@
 import React from "react"
+import { Routes, Route } from "react-router-dom"
+
+import LandingPage from "./components/LandingPage"
 import AuthPage from "./components/auth/AuthPage"
 
 function App() {
   return (
-    <div className="app">
-      <h1>Hello World</h1>
-      <AuthPage />
-    </div>
+    <>
+      <Routes>
+        <Route path="/auth" element={<AuthPage />} />
+        <Route path="/" element={<LandingPage />} />
+      </Routes>
+    </>
   )
 }
 
