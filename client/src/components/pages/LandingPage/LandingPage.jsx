@@ -6,7 +6,9 @@ export function LandingPage() {
     <section>
       <h1>What To Do?</h1>
       <h2>Let's Jot It Down</h2>
-      <Link to="/auth">Get Started</Link>
+      <Link to="/auth">
+        <button>Get Started</button>
+      </Link>
     </section>
   )
 }
