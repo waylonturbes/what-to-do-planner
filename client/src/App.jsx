@@ -1,8 +1,7 @@
 import React from "react"
 import { Routes, Route } from "react-router-dom"
 
-import LandingPage from "./components/LandingPage"
-import AuthPage from "./components/auth/AuthPage"
+import { LandingPage, AuthPage } from "./components/pages"
 
 function App() {
   return (
