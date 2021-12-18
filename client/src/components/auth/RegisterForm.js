@@ -7,7 +7,13 @@ function RegisterForm() {
   // State
   const [formValues, setFormValues] = useState(registerInitialValues)
   const [submitDisabled, setSubmitDisabled] = useState(true)
-  const [formErrors, setFormErrors] = useState(registerInitialValues)
+  const [formErrors, setFormErrors] = useState({
+    first_name: false,
+    last_name: false,
+    username: true,
+    email: true,
+    password: true
+  })
 
   // Event Handlers
   function handleChange(e) {
@@ -65,73 +71,92 @@ function RegisterForm() {
 
   return (
     <form className="form--register" onSubmit={handleSubmit}>
-      <label className="form__label">
-        First Name
+      <div className="form-floating">
         <input
           name="first_name"
           type="text"
-          className=""
+          className="form-control"
+          placeholder="First Name"
           value={formValues.first_name}
           onChange={handleChange}
         />
-      </label>
-      <label className="form__label">
-        Last Name
+        <label className="floatingInput">First Name</label>
+      </div>
+
+      <div className="form-floating">
         <input
           name="last_name"
           type="text"
-          className=""
+          className="form-control"
+          placeholder="Last Name"
           value={formValues.last_name}
           onChange={handleChange}
         />
-      </label>
-      <label className="form__label">
-        Username
+        <label className="floatingInput">Last Name</label>
+      </div>
+
+
+      <div className="form-floating">
         <input
           name="username"
           type="text"
+          placeholder="Username"
           className={
-            (formErrors.username_name !== false)
-              ? "form__input form__input--size-medium"
-              : "form__input form__input--size-medium form__input--state-error"
+            (formErrors.username !== false)
+              ? "form-control is-invalid floatingInputInvalid"
+              : "form-control is-valid floatingInput"
           }
           value={formValues.username}
           onChange={handleChange}
         />
-      </label>
-      <label className="form__label">
-        Email
+        <label className={
+          (formErrors.username !== false)
+            ? "floatingInputInvalid"
+            : "floatingInput"
+        }>Username</label>
+      </div>
+
+      <div className="form-floating">
         <input
           name="email"
           type="email"
+          placeholder="Email"
           className={
             (formErrors.email !== false)
-              ? "form__input form__input--size-medium"
-              : "form__input form__input--size-medium form__input--state-error"
+              ? "form-control is-invalid floatingInputInvalid"
+              : "form-control is-valid floatingInput"
           }
           value={formValues.email}
           onChange={handleChange}
         />
-      </label>
-      <label className="form__label">
-        Password
+        <label className={
+          (formErrors.email !== false)
+            ? "floatingInputInvalid"
+            : "floatingInput"
+        }>Email</label>
+      </div>
+
+      <div className="form-floating">
         <input
           name="password"
           type="password"
+          placeholder="Password"
           className={
             (formErrors.password !== false)
-              ? "form__input form__input--size-medium"
-              : "form__input form__input--size-medium form__input--state-error"
+              ? "form-control is-invalid floatingInputInvalid"
+              : "form-control is-valid floatingInput"
           }
           value={formValues.password}
           onChange={handleChange}
         />
-      </label>
-      <button disabled={submitDisabled} className={
-        (submitDisabled === false)
-          ? "button form__button form__button--submit"
-          : "button form__button--submit form__button--submit-disabled"
-      }>
+        <label className={
+          (formErrors.password !== false)
+            ? "floatingInputInvalid"
+            : "floatingInput"
+        }>Password</label>
+      </div>
+
+      <button disabled={submitDisabled} type="submit" className="btn btn-lg btn-primary">
         Submit</button>
     </form>
   )
