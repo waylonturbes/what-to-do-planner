@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import registerInitialValues from "./registerInitialValues.json"
-import registerSchema from "../../schemas/registerSchema"
+import registerSchema from "../../schemas/register-form-schema"
 import * as yup from "yup"
 
 function RegisterForm() {
@@ -40,12 +40,14 @@ function RegisterForm() {
     yup.reach(registerSchema, inputName)
       .validate(inputValue)
       .then(() => {
+        console.log(formErrors)
         setFormErrors({
           ...formErrors,
           [inputName]: false
         })
       })
       .catch(() => {
+        console.log(formErrors)
         setFormErrors({
           ...formErrors,
           [inputName]: true
@@ -68,11 +70,7 @@ function RegisterForm() {
         <input
           name="first_name"
           type="text"
-          className={
-            (formErrors.first_name !== false)
-              ? "form__input form__input--size-medium"
-              : "form__input form__input--size-medium form__input--state-error"
-          }
+          className=""
           value={formValues.first_name}
           onChange={handleChange}
         />
@@ -82,11 +80,7 @@ function RegisterForm() {
         <input
           name="last_name"
           type="text"
-          className={
-            (formErrors.last_name !== false)
-              ? "form__input form__input--size-medium"
-              : "form__input form__input--size-medium form__input--state-error"
-          }
+          className=""
           value={formValues.last_name}
           onChange={handleChange}
         />
