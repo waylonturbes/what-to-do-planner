@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "client": "cd client && npm run start",
     "server": "nodemon index.js",
     "latest": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
