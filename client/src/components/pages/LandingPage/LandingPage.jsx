@@ -6,7 +6,7 @@ function LandingPage() {
     <section>
       <h1>What To Do?</h1>
       <h2>Let's Jot It Down</h2>
-      <Link to="/auth">
+      <Link to="/auth/login">
         <button>Get Started</button>
       </Link>
     </section>
