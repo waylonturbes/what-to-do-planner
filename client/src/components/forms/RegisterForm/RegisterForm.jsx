@@ -4,11 +4,17 @@ import * as yup from "yup"
 import registerInitialValues from "./registerInitialValues.json"
 import { registerSchema } from "../../../schemas"
 
-export function RegisterForm() {
+function RegisterForm() {
   // State
   const [formValues, setFormValues] = useState(registerInitialValues)
   const [submitDisabled, setSubmitDisabled] = useState(true)
-  const [formErrors, setFormErrors] = useState(registerInitialValues)
+  const [formErrors, setFormErrors] = useState({
+    "first_name": "",
+    "last_name": "",
+    "username": "Username is required",
+    "email": "Email address is required",
+    "password": "Password is required"
+  })
 
   // Event Handlers
   function handleChange(e) {
@@ -43,13 +49,13 @@ export function RegisterForm() {
       .then(() => {
         setFormErrors({
           ...formErrors,
-          [inputName]: false
+          [inputName]: ""
         })
       })
-      .catch(() => {
+      .catch((err) => {
         setFormErrors({
           ...formErrors,
-          [inputName]: true
+          [inputName]: err.errors[0]
         })
       })
   }
@@ -63,84 +69,128 @@ export function RegisterForm() {
   }, [formValues])
 
   return (
-    <form className="form--register" onSubmit={handleSubmit}>
-      <label className="form__label">
-        First Name
+    <form
+      className="container-custom d-grid gap-1 col-xs-6 mx-auto position-absolute top-50 start-50 translate-middle shadow-lg p-4 mb-5 bg-body"
+      onSubmit={handleSubmit}
+    >
+      <h4 className="card-title text-center py-2">Register Form</h4>
+      <div className="mb-3 form-floating">
         <input
           name="first_name"
           type="text"
-          className={
-            (formErrors.first_name !== false)
-              ? "form__input form__input--size-medium"
-              : "form__input form__input--size-medium form__input--state-error"
-          }
+          className="form-control"
+          placeholder="First Name"
           value={formValues.first_name}
           onChange={handleChange}
         />
-      </label>
-      <label className="form__label">
-        Last Name
+        <label className="floatingInput">First Name</label>
+      </div>
+
+      <div className="mb-3 form-floating">
         <input
           name="last_name"
           type="text"
-          className={
-            (formErrors.last_name !== false)
-              ? "form__input form__input--size-medium"
-              : "form__input form__input--size-medium form__input--state-error"
-          }
+          className="form-control"
+          placeholder="Last Name"
           value={formValues.last_name}
           onChange={handleChange}
         />
-      </label>
-      <label className="form__label">
-        Username
+        <label className="floatingInput">Last Name</label>
+      </div>
+
+
+      <div className="mb-3 form-floating">
         <input
           name="username"
           type="text"
+          placeholder="Username"
           className={
-            (formErrors.username_name !== false)
-              ? "form__input form__input--size-medium"
-              : "form__input form__input--size-medium form__input--state-error"
+            (formErrors.username === "")
+              ? "form-control is-valid floatingInput"
+              : "form-control is-invalid floatingInputInvalid"
           }
           value={formValues.username}
           onChange={handleChange}
         />
-      </label>
-      <label className="form__label">
-        Email
+        <label className={
+          (formErrors.username === "")
+            ? "floatingInput"
+            : "floatingInputInvalid"
+        }>Username</label>
+        <div className="valid-feedback">
+          Valid username.
+        </div>
+        <div className="invalid-feedback">
+          {formErrors.username}
+        </div>
+      </div>
+
+      <div className="mb-3 form-floating">
         <input
           name="email"
           type="email"
+          placeholder="Email"
           className={
-            (formErrors.email !== false)
-              ? "form__input form__input--size-medium"
-              : "form__input form__input--size-medium form__input--state-error"
+            (formErrors.email === "")
+              ? "form-control is-valid floatingInput"
+              : "form-control is-invalid floatingInputInvalid"
           }
           value={formValues.email}
           onChange={handleChange}
         />
-      </label>
-      <label className="form__label">
-        Password
+        <label className={
+          (formErrors.email === "")
+            ? "floatingInput"
+            : "floatingInputInvalid"
+        }>Email</label>
+        <div className="valid-feedback">
+          Valid email.
+        </div>
+        <div className="invalid-feedback">
+          {formErrors.email}
+        </div>
+      </div>
+
+      <div className="mb-3 form-floating">
         <input
           name="password"
           type="password"
+          placeholder="Password"
           className={
-            (formErrors.password !== false)
-              ? "form__input form__input--size-medium"
-              : "form__input form__input--size-medium form__input--state-error"
+            (formErrors.password === "")
+              ? "form-control is-valid floatingInput"
+              : "form-control is-invalid floatingInputInvalid"
           }
           value={formValues.password}
           onChange={handleChange}
         />
-      </label>
-      <button disabled={submitDisabled} className={
-        (submitDisabled === false)
-          ? "button form__button form__button--submit"
-          : "button form__button--submit form__button--submit-disabled"
-      }>
-        Submit</button>
+        <label className={
+          (formErrors.password === "")
+            ? "floatingPassword"
+            : "floatingPasswordInvalid"
+        }>Password</label>
+        <div className="valid-feedback">
+          Valid Password.
+        </div>
+        <div className="invalid-feedback">
+          {formErrors.password}
+        </div>
+      </div>
+      <div className="d-grid gap-2 col-6 mx-auto">
+        <button
+          disabled={submitDisabled}
+          type="button"
+          className={
+            (submitDisabled === true)
+              ? "btn p-2 btn-dark btn-lg opacity-25"
+              : "btn p-2 btn-lg btn-success"
+          }
+        >
+          Register
+        </button>
+      </div>
     </form>
+
   )
 }
 

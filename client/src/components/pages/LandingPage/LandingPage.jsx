@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-export function LandingPage() {
+function LandingPage() {
   return (
     <section>
       <h1>What To Do?</h1>

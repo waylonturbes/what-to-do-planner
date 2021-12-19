@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const registerSchema = yup.object().shape({
+const registerSchema = yup.object().shape({
   first_name: yup
     .string()
     .trim(),
@@ -10,17 +10,17 @@ export const registerSchema = yup.object().shape({
   username: yup
     .string()
     .trim()
-    .required("username is required"),
+    .required("Username is required"),
   email: yup
     .string()
     .trim()
-    .email("invalid email address")
-    .required("email address is required"),
+    .email("Invalid email address")
+    .required("Email address is required"),
   password: yup
     .string()
     .trim()
-    .required("password is required")
-    .min(6, "password must contain at least 6 characters")
+    .required("Password is required")
+    .min(6, "Minimum of 6 characters")
 })
 
 export default registerSchema;

@@ -1,6 +1,6 @@
 import { RegisterForm } from "../../forms"
 
-export function AuthPage() {
+function AuthPage() {
   return (
     <div>
       <RegisterForm />

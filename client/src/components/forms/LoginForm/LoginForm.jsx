@@ -6,7 +6,7 @@ const initialFormValues = {
   password: ""
 }
 
-export function LoginForm() {
+function LoginForm() {
   const [formValues, setFormValues] = useState(initialFormValues)
   const [submitDisabled, setSubmitDisabled] = useState(true)
 
