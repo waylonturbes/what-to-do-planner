@@ -9,11 +9,11 @@ function RegisterForm() {
   const [formValues, setFormValues] = useState(registerInitialValues)
   const [submitDisabled, setSubmitDisabled] = useState(true)
   const [formErrors, setFormErrors] = useState({
-    first_name: false,
-    last_name: false,
-    username: true,
-    email: true,
-    password: true
+    "first_name": "",
+    "last_name": "",
+    "username": "Username is required",
+    "email": "Email address is required",
+    "password": "Password is required"
   })
 
   // Event Handlers
@@ -49,13 +49,13 @@ function RegisterForm() {
       .then(() => {
         setFormErrors({
           ...formErrors,
-          [inputName]: false
+          [inputName]: ""
         })
       })
-      .catch(() => {
+      .catch((err) => {
         setFormErrors({
           ...formErrors,
-          [inputName]: true
+          [inputName]: err.errors[0]
         })
       })
   }
@@ -69,12 +69,11 @@ function RegisterForm() {
   }, [formValues])
 
   return (
-
-    <form className="
-    d-grid gap-1 col-6 mx-auto position-absolute
-     top-50 start-50 translate-middle
-    shadow-lg p-5 mb-5 bg-body rounded
-    " onSubmit={handleSubmit}>
+    <form
+      className="container-custom d-grid gap-1 col-xs-6 mx-auto position-absolute top-50 start-50 translate-middle shadow-lg p-4 mb-5 bg-body"
+      onSubmit={handleSubmit}
+    >
+      <h4 className="card-title text-center py-2">Register Form</h4>
       <div className="mb-3 form-floating">
         <input
           name="first_name"
@@ -106,20 +105,23 @@ function RegisterForm() {
           type="text"
           placeholder="Username"
           className={
-            (formErrors.username !== false)
-              ? "form-control is-invalid floatingInputInvalid"
-              : "form-control is-valid floatingInput"
+            (formErrors.username === "")
+              ? "form-control is-valid floatingInput"
+              : "form-control is-invalid floatingInputInvalid"
           }
           value={formValues.username}
           onChange={handleChange}
         />
         <label className={
-          (formErrors.username !== false)
-            ? "floatingInputInvalid"
-            : "floatingInput"
+          (formErrors.username === "")
+            ? "floatingInput"
+            : "floatingInputInvalid"
         }>Username</label>
-        <div class="valid-feedback">
+        <div className="valid-feedback">
           Valid username.
+        </div>
+        <div className="invalid-feedback">
+          {formErrors.username}
         </div>
       </div>
 
@@ -129,20 +131,23 @@ function RegisterForm() {
           type="email"
           placeholder="Email"
           className={
-            (formErrors.email !== false)
-              ? "form-control is-invalid floatingInputInvalid"
-              : "form-control is-valid floatingInput"
+            (formErrors.email === "")
+              ? "form-control is-valid floatingInput"
+              : "form-control is-invalid floatingInputInvalid"
           }
           value={formValues.email}
           onChange={handleChange}
         />
         <label className={
-          (formErrors.email !== false)
-            ? "floatingInputInvalid"
-            : "floatingInput"
+          (formErrors.email === "")
+            ? "floatingInput"
+            : "floatingInputInvalid"
         }>Email</label>
-        <div class="valid-feedback">
+        <div className="valid-feedback">
           Valid email.
+        </div>
+        <div className="invalid-feedback">
+          {formErrors.email}
         </div>
       </div>
 
@@ -152,23 +157,23 @@ function RegisterForm() {
           type="password"
           placeholder="Password"
           className={
-            (formErrors.password !== false)
-              ? "form-control is-invalid floatingInputInvalid"
-              : "form-control is-valid floatingInput"
+            (formErrors.password === "")
+              ? "form-control is-valid floatingInput"
+              : "form-control is-invalid floatingInputInvalid"
           }
           value={formValues.password}
           onChange={handleChange}
         />
         <label className={
-          (formErrors.password !== false)
-            ? "floatingPasswordInvalid"
-            : "floatingPassword"
+          (formErrors.password === "")
+            ? "floatingPassword"
+            : "floatingPasswordInvalid"
         }>Password</label>
-        <div class="valid-feedback">
+        <div className="valid-feedback">
           Valid Password.
         </div>
         <div className="invalid-feedback">
-          Minimum of 6 characters.
+          {formErrors.password}
         </div>
       </div>
       <div className="d-grid gap-2 col-6 mx-auto">
@@ -176,9 +181,9 @@ function RegisterForm() {
           disabled={submitDisabled}
           type="button"
           className={
-            (formErrors.password !== false)
-              ? "btn p-3 btn-dark opacity-25"
-              : "btn p-3 btn-success"
+            (submitDisabled === true)
+              ? "btn p-2 btn-dark btn-sm opacity-25"
+              : "btn p-2 btn-success btn-sm"
           }
         >
           Register
