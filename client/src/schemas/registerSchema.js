@@ -20,7 +20,7 @@ const registerSchema = yup.object().shape({
     .string()
     .trim()
     .required("Password is required")
-    .min(6, "Must contain at least 6 characters")
+    .min(6, "Minimum of 6 characters")
 })
 
 export default registerSchema;
