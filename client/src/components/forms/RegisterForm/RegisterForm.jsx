@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react"
-import registerInitialValues from "./registerInitialValues.json"
-import registerSchema from "../../schemas/register-form-schema"
 import * as yup from "yup"
+
+import registerInitialValues from "./registerInitialValues.json"
+import { registerSchema } from "../../../schemas"
 
 function RegisterForm() {
   // State
@@ -46,14 +47,12 @@ function RegisterForm() {
     yup.reach(registerSchema, inputName)
       .validate(inputValue)
       .then(() => {
-        console.log(formErrors)
         setFormErrors({
           ...formErrors,
           [inputName]: false
         })
       })
       .catch(() => {
-        console.log(formErrors)
         setFormErrors({
           ...formErrors,
           [inputName]: true
@@ -156,8 +155,13 @@ function RegisterForm() {
         }>Password</label>
       </div>
 
-      <button disabled={submitDisabled} type="submit" className="btn btn-lg btn-primary">
-        Submit</button>
+      <button
+        disabled={submitDisabled}
+        type="submit"
+        className="btn btn-lg btn-primary"
+      >
+        Submit
+      </button>
     </form>
   )
 }

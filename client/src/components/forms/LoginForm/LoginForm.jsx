@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import loginSchema from "../../schemas/login-form-schema"
+import { loginSchema } from "../../../schemas"
 
 const initialFormValues = {
   username: "",
