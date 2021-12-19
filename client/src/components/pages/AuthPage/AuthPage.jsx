@@ -3,9 +3,9 @@ import { Routes, Route, NavLink } from "react-router-dom"
 
 function AuthPage() {
   return (
-    <section className="">
-      <div>
-        <nav className="pagination pagination-lg">
+    <section className="auth-page">
+      <div className="d-lg-flex">
+        <nav className="pagination pagination-lg align-items-center justify-content-center my-4">
           <NavLink
             className={({ isActive }) => "page-item page-link" + (isActive ? " page-item active" : "")}
             to="/auth/login"
@@ -19,11 +19,11 @@ function AuthPage() {
             Register
           </NavLink>
         </nav>
+        <Routes>
+          <Route path="login" element={<LoginForm />} />
+          <Route path="register" element={<RegisterForm />} />
+        </Routes>
       </div>
-      <Routes>
-        <Route path="login" element={<LoginForm />} />
-        <Route path="register" element={<RegisterForm />} />
-      </Routes>
     </section>
   )
 }

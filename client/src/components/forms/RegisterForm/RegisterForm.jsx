@@ -70,7 +70,7 @@ function RegisterForm() {
 
   return (
     <form
-      className="container-custom d-grid gap-1 col-xs-6 mx-auto position-absolute top-50 start-50 translate-middle shadow-lg p-4 mb-5 bg-body"
+      className="container-custom d-grid gap-1 col-xs-6 mx-auto p-4 mb-5 bg-body"
       onSubmit={handleSubmit}
     >
       <h4 className="card-title text-center py-2">Register Form</h4>
