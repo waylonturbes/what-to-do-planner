@@ -182,8 +182,8 @@ function RegisterForm() {
           type="button"
           className={
             (submitDisabled === true)
-              ? "btn p-2 btn-dark btn-sm opacity-25"
-              : "btn p-2 btn-success btn-sm"
+              ? "btn p-2 btn-dark btn-lg opacity-25"
+              : "btn p-2 btn-lg btn-success"
           }
         >
           Register
