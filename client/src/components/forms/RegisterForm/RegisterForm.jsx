@@ -69,8 +69,13 @@ function RegisterForm() {
   }, [formValues])
 
   return (
-    <form className="form--register" onSubmit={handleSubmit}>
-      <div className="form-floating">
+
+    <form className="
+    d-grid gap-1 col-6 mx-auto position-absolute
+     top-50 start-50 translate-middle
+    shadow-lg p-5 mb-5 bg-body rounded
+    " onSubmit={handleSubmit}>
+      <div className="mb-3 form-floating">
         <input
           name="first_name"
           type="text"
@@ -82,7 +87,7 @@ function RegisterForm() {
         <label className="floatingInput">First Name</label>
       </div>
 
-      <div className="form-floating">
+      <div className="mb-3 form-floating">
         <input
           name="last_name"
           type="text"
@@ -95,7 +100,7 @@ function RegisterForm() {
       </div>
 
 
-      <div className="form-floating">
+      <div className="mb-3 form-floating">
         <input
           name="username"
           type="text"
@@ -113,9 +118,12 @@ function RegisterForm() {
             ? "floatingInputInvalid"
             : "floatingInput"
         }>Username</label>
+        <div class="valid-feedback">
+          Valid username.
+        </div>
       </div>
 
-      <div className="form-floating">
+      <div className="mb-3 form-floating">
         <input
           name="email"
           type="email"
@@ -133,9 +141,12 @@ function RegisterForm() {
             ? "floatingInputInvalid"
             : "floatingInput"
         }>Email</label>
+        <div class="valid-feedback">
+          Valid email.
+        </div>
       </div>
 
-      <div className="form-floating">
+      <div className="mb-3 form-floating">
         <input
           name="password"
           type="password"
@@ -150,19 +161,31 @@ function RegisterForm() {
         />
         <label className={
           (formErrors.password !== false)
-            ? "floatingInputInvalid"
-            : "floatingInput"
+            ? "floatingPasswordInvalid"
+            : "floatingPassword"
         }>Password</label>
+        <div class="valid-feedback">
+          Valid Password.
+        </div>
+        <div className="invalid-feedback">
+          Minimum of 6 characters.
+        </div>
       </div>
-
-      <button
-        disabled={submitDisabled}
-        type="submit"
-        className="btn btn-lg btn-primary"
-      >
-        Submit
-      </button>
+      <div className="d-grid gap-2 col-6 mx-auto">
+        <button
+          disabled={submitDisabled}
+          type="button"
+          className={
+            (formErrors.password !== false)
+              ? "btn p-3 btn-dark opacity-25"
+              : "btn p-3 btn-success"
+          }
+        >
+          Register
+        </button>
+      </div>
     </form>
+
   )
 }
 
