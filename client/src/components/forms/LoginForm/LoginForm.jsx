@@ -72,7 +72,7 @@ function LoginForm() {
 
   return (
     <form
-      className="container-custom d-grid gap-1 col-xs-6 mx-auto p-4 mb-5 bg-body"
+      className="container-custom d-grid gap-1 mx-auto p-4 mb-5 bg-body"
       onSubmit={handleSubmit}
     >
       {/* <label>
@@ -90,7 +90,7 @@ function LoginForm() {
           type="text"
           placeholder="Username"
           className={
-            (formErrors.password === "")
+            (formErrors.username === "")
               ? "form-control is-valid floatingInput"
               : "form-control is-invalid floatingInputInvalid"
           }
@@ -99,15 +99,57 @@ function LoginForm() {
         />
         <label className={
           (formErrors.username === "")
-            ? "floatingPassword"
-            : "floatingPasswordInvalid"
+            ? "floatingInput"
+            : "floatingInputInvalid"
         }>Username</label>
+        <div className="valid-feedback">
+          Valid username.
+        </div>
         <div className="invalid-feedback">
           {formErrors.username}
         </div>
       </div>
 
-      <label>
+      <div className="mb-3 form-floating">
+        <input
+          name="password"
+          type="password"
+          placeholder="Password"
+          className={
+            (formErrors.password === "")
+              ? "form-control is-valid floatingInput"
+              : "form-control is-invalid floatingInputInvalid"
+          }
+          value={formValues.password}
+          onChange={handleChange}
+        />
+        <label className={
+          (formErrors.password === "")
+            ? "floatingPassword"
+            : "floatingPasswordInvalid"
+        }>Password</label>
+        <div className="valid-feedback">
+          Valid Password.
+        </div>
+        <div className="invalid-feedback">
+          {formErrors.password}
+        </div>
+      </div>
+
+      <div className="d-grid gap-2 col-6 mx-auto">
+        <button
+          disabled={submitDisabled}
+          type="button"
+          className={
+            (submitDisabled === true)
+              ? "btn p-2 btn-dark btn-lg opacity-25"
+              : "btn p-2 btn-lg btn-success"
+          }
+        >
+          Login
+        </button>
+      </div>
+      {/* <label>
         Password:
         <input
           name="password"
@@ -118,7 +160,7 @@ function LoginForm() {
       </label>
       <button disabled={submitDisabled}>
         Submit
-      </button>
+      </button> */}
     </form>
   )
 }

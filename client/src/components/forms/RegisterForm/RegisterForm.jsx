@@ -70,10 +70,9 @@ function RegisterForm() {
 
   return (
     <form
-      className="container-custom d-grid gap-1 col-xs-6 mx-auto p-4 mb-5 bg-body"
+      className="container-custom d-grid gap-1 mx-auto p-4 mb-5 bg-body"
       onSubmit={handleSubmit}
     >
-      <h4 className="card-title text-center py-2">Register Form</h4>
       <div className="mb-3 form-floating">
         <input
           name="first_name"
