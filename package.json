@@ -8,10 +8,10 @@
     "start": "node index.js",
     "client": "cd client && npm run start",
     "server": "nodemon index.js",
-    "latest": "knex migrate:latest",
+    "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
     "seed": "knex seed:run",
-    "resetdb": "npm run rollback && npm run latest && npm run seed",
+    "resetdb": "npm run rollback && npm run migrate && npm run seed",
     "cleanup": "knex seed:run --specific=01-cleanup.js",
     "test": "cross-env NODE_ENV=testing jest ./api --verbose --runInBand --watchAll"
   },
@@ -27,11 +27,13 @@
   },
   "homepage": "https://github.com/DoctorWayWay/what-to-do-planner#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^0.95.14",
-    "sqlite3": "^5.0.2",
+    "pg": "^8.7.1",
     "yup": "^0.32.11"
   },
   "devDependencies": {
