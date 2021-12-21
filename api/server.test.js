@@ -1,24 +1,52 @@
 const request = require("supertest")
+const db = require("../data/db-config")
 const server = require("./server.js")
 
-describe('server.js', () => {
-  describe('index route', () => {
-    it('should return a 200(OKAY) status code from the index route', async () => {
-      const expectedStatusCode = 200
-      const response = await request(server).get('/')
-      expect(response.status).toEqual(expectedStatusCode)
-    })
+const { TEST_PASSWORD } = require("./config")
 
-    it('should return a JSON object from the index route', async () => {
-      const response = await request(server).get('/')
-      expect(response.type).toEqual('application/json')
-    })
+// Reset db before testing
+beforeAll(async () => {
+  await db.migrate.rollback()
+  await db.migrate.latest()
+})
+beforeEach(async () => {
+  await db.seed.run()
+})
+afterAll(async () => {
+  await db.destroy()
+})
 
-    it('should return the JSON object ({ message: "this works!" }) from the index route', async () => {
-      const expectedBody = { message: 'this works!' }
-      const response = await request(server).get('/')
-      expect(response.body).toEqual(expectedBody)
-    })
+// Sanity Check
+describe("sanity check", () => {
+  test("matchers are functional", () => {
+    expect(true).toBe(true)
+    expect(2 + 2).toBe(4)
+    expect(9 + 10).not.toBe(21)
+  })
+
+  test("testing environment is set", () => {
+    const expected = /testing/i
+    const actual = process.env.NODE_ENV
+    expect(actual).toMatch(expected)
+  })
+})
+
+describe("[GET] /", () => {
+  let res
+  beforeAll(async () => {
+    res = await request(server).get("/")
+  })
+
+  it("responds with status 200", async () => {
+    const expected = 200
+    const actual = res.status
+    expect(actual).toBe(expected)
+  })
+
+  it("returns message 'this works!'", async () => {
+    const expected = /this works/i
+    const actual = res.body.message
+    expect(actual).toMatch(expected)
   })
 })
 
@@ -30,23 +58,23 @@ describe("[POST] /api/auth/login", () => {
         .post("/api/auth/login")
         .send({
           username: "john_snow",
-          password: "john_snow"
+          password: TEST_PASSWORD
         })
     })
 
-    it("responds with status 200", async () => {
+    it("responds with status 200", () => {
       const expected = 200
       const actual = res.status
       expect(actual).toBe(expected)
     })
 
-    it("returns message 'Welcome, USERNAME!", async () => {
+    it("returns message 'Welcome, USERNAME!'", () => {
       const expected = /welcome, john_snow/i
       const actual = res.body.message
       expect(actual).toMatch(expected)
     })
 
-    it("returns login token", async () => {
+    it("returns login token", () => {
       const expected = "token"
       const actual = res.body
       expect(actual).toHaveProperty(expected)
@@ -54,31 +82,81 @@ describe("[POST] /api/auth/login", () => {
   })
 
   describe("failure", () => {
-    it("responds with status 401", async () => {
-      const expected = 401
-      const res = await request(server)
-        .post("/api/auth/login")
-      const actual = res.status
-      expect(actual).toBe(expected)
+    describe("misformatted/invalid request body", () => {
+      it("responds with status 400", async () => {
+        const expected = 400
+        const res = await request(server)
+          .post("/api/auth/login")
+        const actual = res.status
+        expect(actual).toBe(expected)
+      })
+
+      it("returns message 'username is required' when missing", async () => {
+        const expected = /username is required/i
+        const res = await request(server)
+          .post("/api/auth/login")
+          .send({
+            password: "testing"
+          })
+        const actual = res.body.message
+        expect(actual).toMatch(expected)
+      })
+
+      it("returns message 'password is required' when missing", async () => {
+        const expected = /password is required/i
+        const res = await request(server)
+          .post("/api/auth/login")
+        const actual = res.body.message
+        expect(actual).toMatch(expected)
+      })
     })
 
-    it("returns message 'username is required' when missing", async () => {
-      const expected = /username is required/i
-      const res = await request(server)
-        .post("/api/auth/login")
-        .send({
-          password: "testing"
-        })
-      const actual = res.body.message
-      expect(actual).toMatch(expected)
+    describe("non-existent user", () => {
+      let res
+      beforeAll(async () => {
+        res = await request(server)
+          .post("/api/auth/login")
+          .send({
+            username: "testing",
+            password: "testing"
+          })
+      })
+
+      it("responds with status 404", () => {
+        const expected = 404
+        const actual = res.status
+        expect(actual).toBe(expected)
+      })
+
+      it("returns message 'user does not exist'", () => {
+        const expected = /user does not exist/i
+        const actual = res.body.message
+        expect(actual).toMatch(expected)
+      })
     })
 
-    it("returns message 'password is required' when missing", async () => {
-      const expected = /password is required/i
-      const res = await request(server)
-        .post("/api/auth/login")
-      const actual = res.body.message
-      expect(actual).toMatch(expected)
+    describe("wrong password", () => {
+      let res
+      beforeAll(async () => {
+        res = await request(server)
+          .post("/api/auth/login")
+          .send({
+            username: "john_snow",
+            password: "wrong_password"
+          })
+      })
+
+      it("responds with status 401", () => {
+        const expected = 401
+        const actual = res.status
+        expect(actual).toBe(expected)
+      })
+
+      it("returns message 'invalid credentials'", () => {
+        const expected = /invalid credentials/i
+        const actual = res.body.message
+        expect(actual).toMatch(expected)
+      })
     })
   })
 })
@@ -90,11 +168,11 @@ describe("[POST] /api/auth/register", () => {
       res = await request(server)
         .post("/api/auth/register")
         .send({
-          first_name: "John",
-          last_name: "Snow",
-          email: "john_snow@castleblack.net",
-          username: "john_snow",
-          password: "king_of_the_north"
+          first_name: "Ulfric",
+          last_name: "Stormcloak",
+          email: "ustormcloak@windhelm.net",
+          username: "ulfric_stormcloak",
+          password: "true_high_king"
         })
     })
 
@@ -112,16 +190,16 @@ describe("[POST] /api/auth/register", () => {
   })
 
   describe("failure", () => {
-    it("responds with status 401", async () => {
-      const expected = 401
-      const res = await request(server)
-        .post("/api/auth/register")
-      const actual = res.status
-      expect(actual).toBe(expected)
-    })
+    describe("misformatted username", () => {
+      it("responds with status 400", async () => {
+        const expected = 400
+        const res = await request(server)
+          .post("/api/auth/register")
+        const actual = res.status
+        expect(actual).toBe(expected)
+      })
 
-    describe("invalid username", () => {
-      it("returns message 'username is required'", async () => {
+      it("returns message 'username is required' when missing", async () => {
         const expected = /username is required/i
         const res = await request(server)
           .post("/api/auth/register")
@@ -142,6 +220,31 @@ describe("[POST] /api/auth/register", () => {
             email: "john_snow@castleback.net",
             password: "testing"
           })
+        const actual = res.body.message
+        expect(actual).toMatch(expected)
+      })
+    })
+
+    describe("username taken", () => {
+      let res
+      beforeAll(async () => {
+        res = await request(server)
+          .post("/api/auth/register")
+          .send({
+            username: "john_snow",
+            email: "john_snow@castleback.net",
+            password: "testing"
+          })
+      })
+
+      it("responds with status 409", () => {
+        const expected = 409
+        const actual = res.status
+        expect(actual).toBe(expected)
+      })
+
+      it("returns message 'username already taken'", () => {
+        const expected = /username already taken/i
         const actual = res.body.message
         expect(actual).toMatch(expected)
       })
