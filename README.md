@@ -18,19 +18,25 @@ Allows users to register for a new account
 
 **Accepted Inputs:**
 
-Field      | Type   | Required | Notes
------------|--------|----------|-----------------------------------
-first_name | string | no       |
-last_name  | string | no       |
-email      | string | yes      | must be a validly formatted email
-username   | string | yes      | must contain at least 3 characters
-password   | string | yes      | must contain at least 6 characters
+Field      | Type   | Required | Unique | Notes
+-----------|--------|----------|--------|-----------------------------------
+first_name | string | no       | no     |
+last_name  | string | no       | no     |
+email      | string | yes      | yes    | must be a validly formatted email
+username   | string | yes      | yes    | must contain at least 3 characters
+password   | string | yes      | no     | must contain at least 6 characters
 
 **Successful Output:**
 
 ```
 {
-  message: "User registered, successfully!"
+  "message": "New user registered, successfully!",
+  "userInfo": {
+    "email": "ustormcloak@windhelm.net",
+    "id": 9,
+    "name": "Ulfric Stormcloak",
+    "username": "ulfric_stormcloak"
+  }
 }
 ```
 
@@ -49,7 +55,7 @@ password | string | yes
 
 ```
 {
-  message: "Welcome, USERNAME!",
-  token: "login token would be here"
+  "message": "Welcome, ulfric_stormcloak!",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVsZnJjwacFDG9ybWNsb2FrIiwiaWF0IjoxNjQwMTE1NTc5LCJleHAiOjE2NDAxMTkxNzl9.W91ZGiSYKFbJdzt9G4JRjS6H3AV040Ia46PMFwvTUh0"
 }
 ```
