@@ -1,9 +1,9 @@
-.container-custom {
+.container {
   width: 36rem;
   border-radius: 1rem;
 }
 @media (max-width: 576px) {
-  .container-custom {
+  .container {
     width: 100%;
     border-radius: 0;
     height: 100%;

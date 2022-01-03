@@ -1,3 +1,21 @@
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
 #root {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
+}
+h1 {
+  font-size: 3.6rem;
+}
+h2 {
+  font-size: 2.4rem;
+}
+h3 {
+  font-size: 2rem;
+}
+p, span, button, li, a, label {
+  font-size: 1.8rem;
 }
