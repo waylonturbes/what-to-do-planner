@@ -72,95 +72,70 @@ function LoginForm() {
 
   return (
     <form
-      className="container-custom d-grid gap-1 mx-auto p-4 mb-5 bg-body"
+      className=""
       onSubmit={handleSubmit}
     >
-      {/* <label>
-        Username:
-        <input
-          name="username"
-          onChange={handleChange}
-          type="text"
-          value={formValues.username}
-        />
-      </label> */}
-      <div className="mb-3 form-floating">
-        <input
-          name="username"
-          type="text"
-          placeholder="Username"
-          className={
-            (formErrors.username === "")
-              ? "form-control is-valid floatingInput"
-              : "form-control is-invalid floatingInputInvalid"
-          }
-          value={formValues.username}
-          onChange={handleChange}
-        />
-        <label className={
+      <label for="username" className={
+        (formErrors.username === "")
+          ? "" // valid
+          : "" // invalid
+      }>Username</label>
+      <input
+        name="username"
+        type="text"
+        id="username"
+        placeholder="Username"
+        className={
           (formErrors.username === "")
-            ? "floatingInput"
-            : "floatingInputInvalid"
-        }>Username</label>
-        <div className="valid-feedback">
-          Valid username.
-        </div>
-        <div className="invalid-feedback">
-          {formErrors.username}
-        </div>
-      </div>
+            ? "" // valid
+            : "" // invalid
+        }
+        value={formValues.username}
+        onChange={handleChange}
+      />
+      <p className="">
+        Valid username.
+      </p>
+      <p className="">
+        {formErrors.username}
+      </p>
 
-      <div className="mb-3 form-floating">
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          className={
-            (formErrors.password === "")
-              ? "form-control is-valid floatingInput"
-              : "form-control is-invalid floatingInputInvalid"
-          }
-          value={formValues.password}
-          onChange={handleChange}
-        />
-        <label className={
+      <label for="password" className={
+        (formErrors.password === "")
+          ? "" // valid
+          : "" // invalid
+      }>Password</label>
+      <input
+        name="password"
+        type="password"
+        id="password"
+        placeholder="Password"
+        className={
           (formErrors.password === "")
-            ? "floatingPassword"
-            : "floatingPasswordInvalid"
-        }>Password</label>
-        <div className="valid-feedback">
-          Valid Password.
-        </div>
-        <div className="invalid-feedback">
-          {formErrors.password}
-        </div>
-      </div>
+            ? "" // valid
+            : "" // invalid
+        }
+        value={formValues.password}
+        onChange={handleChange}
+      />
+      <p className="">
+        Valid Password.
+      </p>
+      <p className="">
+        {formErrors.password}
+      </p>
 
-      <div className="d-grid gap-2 col-6 mx-auto">
-        <button
-          disabled={submitDisabled}
-          type="button"
-          className={
-            (submitDisabled === true)
-              ? "btn p-2 btn-dark btn-lg opacity-25"
-              : "btn p-2 btn-lg btn-success"
-          }
-        >
-          Login
-        </button>
-      </div>
-      {/* <label>
-        Password:
-        <input
-          name="password"
-          onChange={handleChange}
-          type="password"
-          value={formValues.password}
-        />
-      </label>
-      <button disabled={submitDisabled}>
-        Submit
-      </button> */}
+      <button
+        disabled={submitDisabled}
+        type="submit"
+        className={
+          (submitDisabled === true)
+            ? "" // disabled
+            : "" // enabled
+        }
+      >
+        Login
+      </button>
     </form>
   )
 }

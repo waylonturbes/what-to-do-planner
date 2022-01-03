@@ -70,124 +70,117 @@ function RegisterForm() {
 
   return (
     <form
-      className="container-custom d-grid gap-1 mx-auto p-4 mb-5 bg-body"
+      className=""
       onSubmit={handleSubmit}
     >
-      <div className="mb-3 form-floating">
-        <input
-          name="first_name"
-          type="text"
-          className="form-control"
-          placeholder="First Name"
-          value={formValues.first_name}
-          onChange={handleChange}
-        />
-        <label className="floatingInput">First Name</label>
-      </div>
+      <label for="first_name" className="">First Name</label>
+      <input
+        name="first_name"
+        type="text"
+        id="first_name"
+        className=""
+        placeholder="First Name"
+        value={formValues.first_name}
+        onChange={handleChange}
+      />
 
-      <div className="mb-3 form-floating">
-        <input
-          name="last_name"
-          type="text"
-          className="form-control"
-          placeholder="Last Name"
-          value={formValues.last_name}
-          onChange={handleChange}
-        />
-        <label className="floatingInput">Last Name</label>
-      </div>
+      <label for="last_name" className="">Last Name</label>
+      <input
+        name="last_name"
+        type="text"
+        id="last_name"
+        className=""
+        placeholder="Last Name"
+        value={formValues.last_name}
+        onChange={handleChange}
+      />
 
-
-      <div className="mb-3 form-floating">
-        <input
-          name="username"
-          type="text"
-          placeholder="Username"
-          className={
-            (formErrors.username === "")
-              ? "form-control is-valid floatingInput"
-              : "form-control is-invalid floatingInputInvalid"
-          }
-          value={formValues.username}
-          onChange={handleChange}
-        />
-        <label className={
+      <label for="username" className={
+        (formErrors.username === "")
+          ? "" // valid
+          : "" // invalid
+      }>Username</label>
+      <input
+        name="username"
+        type="text"
+        id="username"
+        placeholder="Username"
+        className={
           (formErrors.username === "")
-            ? "floatingInput"
-            : "floatingInputInvalid"
-        }>Username</label>
-        <div className="valid-feedback">
-          Valid username.
-        </div>
-        <div className="invalid-feedback">
-          {formErrors.username}
-        </div>
-      </div>
+            ? "" // valid
+            : "" // invalid
+        }
+        value={formValues.username}
+        onChange={handleChange}
+      />
+      <p className="">
+        Valid username.
+      </p>
+      <p className="">
+        {formErrors.username}
+      </p>
 
-      <div className="mb-3 form-floating">
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          className={
-            (formErrors.email === "")
-              ? "form-control is-valid floatingInput"
-              : "form-control is-invalid floatingInputInvalid"
-          }
-          value={formValues.email}
-          onChange={handleChange}
-        />
-        <label className={
+      <label for="email" className={
+        (formErrors.email === "")
+          ? "" // valid
+          : "" // invalid
+      }>Email</label>
+      <input
+        name="email"
+        type="email"
+        id="email"
+        placeholder="Email"
+        className={
           (formErrors.email === "")
-            ? "floatingInput"
-            : "floatingInputInvalid"
-        }>Email</label>
-        <div className="valid-feedback">
-          Valid email.
-        </div>
-        <div className="invalid-feedback">
-          {formErrors.email}
-        </div>
-      </div>
+            ? "" // valid
+            : "" // invalid
+        }
+        value={formValues.email}
+        onChange={handleChange}
+      />
+      <p className="">
+        Valid email.
+      </p>
+      <p className="">
+        {formErrors.email}
+      </p>
 
-      <div className="mb-3 form-floating">
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          className={
-            (formErrors.password === "")
-              ? "form-control is-valid floatingInput"
-              : "form-control is-invalid floatingInputInvalid"
-          }
-          value={formValues.password}
-          onChange={handleChange}
-        />
-        <label className={
+      <label for="password" className={
+        (formErrors.password === "")
+          ? "" // valid
+          : "" // invalid
+      }>Password</label>
+      <input
+        name="password"
+        type="password"
+        id="password"
+        placeholder="Password"
+        className={
           (formErrors.password === "")
-            ? "floatingPassword"
-            : "floatingPasswordInvalid"
-        }>Password</label>
-        <div className="valid-feedback">
-          Valid Password.
-        </div>
-        <div className="invalid-feedback">
-          {formErrors.password}
-        </div>
-      </div>
-      <div className="d-grid gap-2 col-6 mx-auto">
-        <button
-          disabled={submitDisabled}
-          type="button"
-          className={
-            (submitDisabled === true)
-              ? "btn p-2 btn-dark btn-lg opacity-25"
-              : "btn p-2 btn-lg btn-success"
-          }
-        >
-          Register
-        </button>
-      </div>
+            ? "" // valid
+            : "" // invalid
+        }
+        value={formValues.password}
+        onChange={handleChange}
+      />
+      <p className="">
+        Valid Password.
+      </p>
+      <p className="">
+        {formErrors.password}
+      </p>
+
+      <button
+        disabled={submitDisabled}
+        type="submit"
+        className={
+          (submitDisabled === true)
+            ? "" // disabled
+            : "" // enabled
+        }
+      >
+        Register
+      </button>
     </form>
 
   )
