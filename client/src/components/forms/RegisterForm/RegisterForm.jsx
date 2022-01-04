@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react"
 import * as yup from "yup"
 
+import registerStyles from "./registerForm.module.css"
+
 import registerInitialValues from "./registerInitialValues.json"
 import { registerSchema } from "../../../schemas"
 
@@ -70,10 +72,15 @@ function RegisterForm() {
 
   return (
     <form
-      className=""
+      className={registerStyles.form}
       onSubmit={handleSubmit}
     >
-      <label for="first_name" className="">First Name</label>
+      <label
+        for="first_name"
+        className=""
+      >
+        First Name
+      </label>
       <input
         name="first_name"
         type="text"
@@ -84,7 +91,12 @@ function RegisterForm() {
         onChange={handleChange}
       />
 
-      <label for="last_name" className="">Last Name</label>
+      <label
+        for="last_name"
+        className=""
+      >
+        Last Name
+      </label>
       <input
         name="last_name"
         type="text"
@@ -95,11 +107,15 @@ function RegisterForm() {
         onChange={handleChange}
       />
 
-      <label for="username" className={
-        (formErrors.username === "")
-          ? "" // valid
-          : "" // invalid
-      }>Username</label>
+      <label
+        for="username"
+        className={
+          (formErrors.username === "")
+            ? "" // valid
+            : "" // invalid
+        }>
+        Username
+      </label>
       <input
         name="username"
         type="text"
