@@ -75,44 +75,46 @@ function RegisterForm() {
       className={registerStyles.form}
       onSubmit={handleSubmit}
     >
-      <h3>Register</h3>
-      <div>
-        <label
-          for="first_name"
-          className=""
-        >
-          First Name
-        </label>
-        <input
-          name="first_name"
-          type="text"
-          id="first_name"
-          className=""
-          placeholder="First Name"
-          value={formValues.first_name}
-          onChange={handleChange}
-        />
+      <h3 className={registerStyles.formTitle}>Register</h3>
+
+      <div className={registerStyles.formItem}>
+        <div className={registerStyles.multiInputContainer}>
+          <div className={registerStyles.inputAndLabel}>
+            <input
+              name="first_name"
+              type="text"
+              id="name"
+              className={registerStyles.input}
+              value={formValues.first_name}
+              onChange={handleChange}
+            />
+            <label
+              for="first_name"
+              className={registerStyles.subtitle}
+            >
+              First Name
+            </label>
+          </div>
+          <div className={registerStyles.inputAndLabel}>
+            <input
+              name="last_name"
+              type="text"
+              id="last_name"
+              className={registerStyles.input}
+              value={formValues.last_name}
+              onChange={handleChange}
+            />
+            <label
+              for="last_name"
+              className={registerStyles.subtitle}
+            >
+              Last Name
+            </label>
+          </div>
+        </div>
       </div>
 
-      <div>
-        <label
-          for="last_name"
-          className=""
-        >
-          Last Name
-        </label>
-        <input
-          name="last_name"
-          type="text"
-          id="last_name"
-          className=""
-          placeholder="Last Name"
-          value={formValues.last_name}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div>
+      <div className={registerStyles.formItem}>
         <label
           for="username"
           className={
@@ -126,7 +128,6 @@ function RegisterForm() {
           name="username"
           type="text"
           id="username"
-          placeholder="Username"
           className={
             (formErrors.username === "")
               ? "" // valid
@@ -143,7 +144,7 @@ function RegisterForm() {
         </p>
       </div>
 
-      <div>
+      <div className={registerStyles.formItem}>
         <label for="email" className={
           (formErrors.email === "")
             ? "" // valid
@@ -153,7 +154,6 @@ function RegisterForm() {
           name="email"
           type="email"
           id="email"
-          placeholder="Email"
           className={
             (formErrors.email === "")
               ? "" // valid
@@ -170,7 +170,7 @@ function RegisterForm() {
         </p>
       </div>
 
-      <div>
+      <div className={registerStyles.formItem}>
         <label for="password" className={
           (formErrors.password === "")
             ? "" // valid
@@ -180,7 +180,6 @@ function RegisterForm() {
           name="password"
           type="password"
           id="password"
-          placeholder="Password"
           className={
             (formErrors.password === "")
               ? "" // valid
@@ -197,17 +196,19 @@ function RegisterForm() {
         </p>
       </div>
 
-      <button
-        disabled={submitDisabled}
-        type="submit"
-        className={
-          (submitDisabled === true)
-            ? "" // disabled
-            : "" // enabled
-        }
-      >
-        Register
-      </button>
+      <div className={registerStyles.formItem}>
+        <button
+          disabled={submitDisabled}
+          type="submit"
+          className={
+            (submitDisabled === true)
+              ? "" // disabled
+              : "" // enabled
+          }
+        >
+          Register
+        </button>
+      </div>
     </form>
 
   )

@@ -4,3 +4,37 @@
   align-items: center;
   justify-content: space-evenly;
 }
+.formTitle {
+  padding: 1rem 0;
+}
+.formItem {
+  padding: 1rem 0;
+}
+.multiInputContainer {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.inputAndLabel {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+}
+.input {
+  width: 16rem;
+  height: 3rem;
+  background-color: var(--white);
+  border: 0.1rem solid var(--gray-800);
+  outline: none;
+  border-radius: 0.6rem;
+  transition: 0.4s all;
+}
+.input:focus {
+  box-shadow: 0px 0px 5px 0px var(--gray-800);
+}
+.subtitle {
+  padding: 0.6rem 0;
+  font-size: 1.4rem;
+  color: var(--gray-800);
+}
