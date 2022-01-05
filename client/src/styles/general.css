@@ -3,6 +3,10 @@ html {
   font-size: 62.5%;
   scroll-behavior: smooth;
   font-family: 'Noto Sans', sans-serif;
+  color: var(--dark);
+}
+body {
+  background:linear-gradient(180deg, rgba(73, 80, 87, 1) 0%, rgba(52, 58, 64, 1) 80%, rgba(33, 37, 41, 1) 100%);
 }
 #root {
   display: flex;
