@@ -75,6 +75,7 @@ function LoginForm() {
       className=""
       onSubmit={handleSubmit}
     >
+      <h3>Login</h3>
       <label for="username" className={
         (formErrors.username === "")
           ? "" // valid

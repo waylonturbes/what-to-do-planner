@@ -7,8 +7,22 @@
 }
 .container {
   border-radius: 1.6rem;
+  border: 0.3rem solid var(--gray-300);
   background-color: var(--gray-100);
-  outline-offset: 1rem;
+  min-height: 36rem;
+  outline-offset: 0.6rem;
   padding: 3rem;
-  outline: 0.4rem solid var(--gray-100);
+  outline: 0.2rem solid var(--gray-100);
+  box-shadow: 0px 0px 2rem 0.6rem var(--orange);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.navLink {
+  padding-left: 1rem;
+}
+.route {
+  display: flex;
+  justify-content: center;
 }

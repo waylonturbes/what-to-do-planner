@@ -22,6 +22,6 @@ h2 {
 h3 {
   font-size: 2.4rem;
 }
-p, span, button, li, a, label {
+p, span, button, li, a, label, input {
   font-size: 1.8rem;
 }

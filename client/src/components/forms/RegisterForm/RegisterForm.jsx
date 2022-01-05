@@ -75,6 +75,7 @@ function RegisterForm() {
       className={registerStyles.form}
       onSubmit={handleSubmit}
     >
+      <h3>Register</h3>
       <div>
         <label
           for="first_name"
