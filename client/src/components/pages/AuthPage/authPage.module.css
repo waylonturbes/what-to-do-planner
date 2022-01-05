@@ -1,0 +1,14 @@
+.page {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+  border-radius: 1.6rem;
+  background-color: var(--gray-100);
+  outline-offset: 1rem;
+  padding: 3rem;
+  outline: 0.4rem solid var(--gray-100);
+}

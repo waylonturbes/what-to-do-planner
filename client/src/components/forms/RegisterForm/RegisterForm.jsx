@@ -75,116 +75,126 @@ function RegisterForm() {
       className={registerStyles.form}
       onSubmit={handleSubmit}
     >
-      <label
-        for="first_name"
-        className=""
-      >
-        First Name
-      </label>
-      <input
-        name="first_name"
-        type="text"
-        id="first_name"
-        className=""
-        placeholder="First Name"
-        value={formValues.first_name}
-        onChange={handleChange}
-      />
+      <div>
+        <label
+          for="first_name"
+          className=""
+        >
+          First Name
+        </label>
+        <input
+          name="first_name"
+          type="text"
+          id="first_name"
+          className=""
+          placeholder="First Name"
+          value={formValues.first_name}
+          onChange={handleChange}
+        />
+      </div>
 
-      <label
-        for="last_name"
-        className=""
-      >
-        Last Name
-      </label>
-      <input
-        name="last_name"
-        type="text"
-        id="last_name"
-        className=""
-        placeholder="Last Name"
-        value={formValues.last_name}
-        onChange={handleChange}
-      />
+      <div>
+        <label
+          for="last_name"
+          className=""
+        >
+          Last Name
+        </label>
+        <input
+          name="last_name"
+          type="text"
+          id="last_name"
+          className=""
+          placeholder="Last Name"
+          value={formValues.last_name}
+          onChange={handleChange}
+        />
+      </div>
 
-      <label
-        for="username"
-        className={
-          (formErrors.username === "")
-            ? "" // valid
-            : "" // invalid
-        }>
-        Username
-      </label>
-      <input
-        name="username"
-        type="text"
-        id="username"
-        placeholder="Username"
-        className={
-          (formErrors.username === "")
-            ? "" // valid
-            : "" // invalid
-        }
-        value={formValues.username}
-        onChange={handleChange}
-      />
-      <p className="">
-        Valid username.
-      </p>
-      <p className="">
-        {formErrors.username}
-      </p>
+      <div>
+        <label
+          for="username"
+          className={
+            (formErrors.username === "")
+              ? "" // valid
+              : "" // invalid
+          }>
+          Username
+        </label>
+        <input
+          name="username"
+          type="text"
+          id="username"
+          placeholder="Username"
+          className={
+            (formErrors.username === "")
+              ? "" // valid
+              : "" // invalid
+          }
+          value={formValues.username}
+          onChange={handleChange}
+        />
+        <p className="">
+          Valid username.
+        </p>
+        <p className="">
+          {formErrors.username}
+        </p>
+      </div>
 
-      <label for="email" className={
-        (formErrors.email === "")
-          ? "" // valid
-          : "" // invalid
-      }>Email</label>
-      <input
-        name="email"
-        type="email"
-        id="email"
-        placeholder="Email"
-        className={
+      <div>
+        <label for="email" className={
           (formErrors.email === "")
             ? "" // valid
             : "" // invalid
-        }
-        value={formValues.email}
-        onChange={handleChange}
-      />
-      <p className="">
-        Valid email.
-      </p>
-      <p className="">
-        {formErrors.email}
-      </p>
+        }>Email</label>
+        <input
+          name="email"
+          type="email"
+          id="email"
+          placeholder="Email"
+          className={
+            (formErrors.email === "")
+              ? "" // valid
+              : "" // invalid
+          }
+          value={formValues.email}
+          onChange={handleChange}
+        />
+        <p className="">
+          Valid email.
+        </p>
+        <p className="">
+          {formErrors.email}
+        </p>
+      </div>
 
-      <label for="password" className={
-        (formErrors.password === "")
-          ? "" // valid
-          : "" // invalid
-      }>Password</label>
-      <input
-        name="password"
-        type="password"
-        id="password"
-        placeholder="Password"
-        className={
+      <div>
+        <label for="password" className={
           (formErrors.password === "")
             ? "" // valid
             : "" // invalid
-        }
-        value={formValues.password}
-        onChange={handleChange}
-      />
-      <p className="">
-        Valid Password.
-      </p>
-      <p className="">
-        {formErrors.password}
-      </p>
+        }>Password</label>
+        <input
+          name="password"
+          type="password"
+          id="password"
+          placeholder="Password"
+          className={
+            (formErrors.password === "")
+              ? "" // valid
+              : "" // invalid
+          }
+          value={formValues.password}
+          onChange={handleChange}
+        />
+        <p className="">
+          Valid Password.
+        </p>
+        <p className="">
+          {formErrors.password}
+        </p>
+      </div>
 
       <button
         disabled={submitDisabled}
