@@ -75,7 +75,7 @@ function RegisterForm() {
       className={registerStyles.form}
       onSubmit={handleSubmit}
     >
-      <h3 className={registerStyles.formTitle}>Register</h3>
+      <h2 className={registerStyles.formTitle}>Register</h2>
 
       <div className={registerStyles.formItem}>
         <div className={registerStyles.inputContainer}>
@@ -124,16 +124,15 @@ function RegisterForm() {
               id="username"
               className={
                 (formErrors.username === "")
-                  ? `${registerStyles.input}` + ` ${registerStyles.validInput}` // valid
-                  : `${registerStyles.input}` + ` ${registerStyles.invalidInput}` // invalid
+                  ? `${registerStyles.input} ${registerStyles.validInput}` // valid
+                  : `${registerStyles.input} ${registerStyles.invalidInput}` // invalid
               }
               value={formValues.username}
               onChange={handleChange}
             />
             {
-              (formErrors.username === "")
-                ? <p className={`${registerStyles.subtitle}` + ` ${registerStyles.validSubtitle}`}>Valid username.</p>
-                : <p className={`${registerStyles.subtitle}` + ` ${registerStyles.invalidSubtitle}`}>{formErrors.username}</p>
+              (formErrors.username !== "")
+              && <p className={`${registerStyles.subtitle} ${registerStyles.invalidSubtitle}`}>{formErrors.username}</p>
             }
           </div>
         </div>
@@ -149,16 +148,15 @@ function RegisterForm() {
               id="email"
               className={
                 (formErrors.email === "")
-                  ? `${registerStyles.input}` + ` ${registerStyles.validInput}` // valid
-                  : `${registerStyles.input}` + ` ${registerStyles.invalidInput}` // invalid
+                  ? `${registerStyles.input} ${registerStyles.validInput}` // valid
+                  : `${registerStyles.input} ${registerStyles.invalidInput}` // invalid
               }
               value={formValues.email}
               onChange={handleChange}
             />
             {
-              (formErrors.email === "")
-                ? <p className={`${registerStyles.subtitle}` + ` ${registerStyles.validSubtitle}`}>Valid email.</p>
-                : <p className={`${registerStyles.subtitle}` + ` ${registerStyles.invalidSubtitle}`}>{formErrors.email}</p>
+              (formErrors.email !== "")
+              && <p className={`${registerStyles.subtitle} ${registerStyles.invalidSubtitle}`}>{formErrors.email}</p>
             }
           </div>
         </div>
@@ -174,16 +172,15 @@ function RegisterForm() {
               id="password"
               className={
                 (formErrors.password === "")
-                  ? `${registerStyles.input}` + ` ${registerStyles.validInput}` // valid
-                  : `${registerStyles.input}` + ` ${registerStyles.invalidInput}` // invalid
+                  ? `${registerStyles.input} ${registerStyles.validInput}` // valid
+                  : `${registerStyles.input} ${registerStyles.invalidInput}` // invalid
               }
               value={formValues.password}
               onChange={handleChange}
             />
             {
-              (formErrors.password === "")
-                ? <p className={`${registerStyles.subtitle}` + ` ${registerStyles.validSubtitle}`}>Valid password.</p>
-                : <p className={`${registerStyles.subtitle}` + ` ${registerStyles.invalidSubtitle}`}>{formErrors.password}</p>
+              (formErrors.password !== "")
+              && <p className={`${registerStyles.subtitle} ${registerStyles.invalidSubtitle}`}>{formErrors.password}</p>
             }
           </div>
         </div>
@@ -195,8 +192,8 @@ function RegisterForm() {
           type="submit"
           className={
             (submitDisabled === true)
-              ? "" // disabled
-              : "" // enabled
+              ? `${registerStyles.button} ${registerStyles.disabledButton}` // disabled
+              : `${registerStyles.button} ${registerStyles.enabledButton}` // enabled
           }
         >
           Register
