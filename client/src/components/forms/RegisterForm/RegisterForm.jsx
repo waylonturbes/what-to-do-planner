@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import * as yup from "yup"
 
-import registerStyles from "./registerForm.module.css"
+import authFormStyles from "../authForm.module.css"
 
 import registerInitialValues from "./registerInitialValues.json"
 import { registerSchema } from "../../../schemas"
@@ -72,41 +72,41 @@ function RegisterForm() {
 
   return (
     <form
-      className={registerStyles.form}
+      className={authFormStyles.form}
       onSubmit={handleSubmit}
     >
-      <h2 className={registerStyles.formTitle}>Register</h2>
+      <h2 className={authFormStyles.formTitle}>Register</h2>
 
-      <div className={registerStyles.formItem}>
-        <div className={registerStyles.inputContainer}>
-          <div className={registerStyles.inputAndSubtitle}>
+      <div className={authFormStyles.formItem}>
+        <div className={authFormStyles.inputContainer}>
+          <div className={authFormStyles.inputAndSubtitle}>
             <input
               name="first_name"
               type="text"
               id="name"
-              className={`${registerStyles.input} + ${registerStyles.smallInput}`}
+              className={`${authFormStyles.input} + ${authFormStyles.smallInput}`}
               value={formValues.first_name}
               onChange={handleChange}
             />
             <label
               for="first_name"
-              className={registerStyles.subtitle}
+              className={authFormStyles.subtitle}
             >
               First Name
             </label>
           </div>
-          <div className={registerStyles.inputAndSubtitle}>
+          <div className={authFormStyles.inputAndSubtitle}>
             <input
               name="last_name"
               type="text"
               id="last_name"
-              className={`${registerStyles.input} + ${registerStyles.smallInput}`}
+              className={`${authFormStyles.input} + ${authFormStyles.smallInput}`}
               value={formValues.last_name}
               onChange={handleChange}
             />
             <label
               for="last_name"
-              className={registerStyles.subtitle}
+              className={authFormStyles.subtitle}
             >
               Last Name
             </label>
@@ -114,86 +114,86 @@ function RegisterForm() {
         </div>
       </div>
 
-      <div className={registerStyles.formItem}>
-        <div className={registerStyles.inputContainer}>
-          <label for="username" className={registerStyles.label}>Username</label>
-          <div className={registerStyles.inputAndSubtitle}>
+      <div className={authFormStyles.formItem}>
+        <div className={authFormStyles.inputContainer}>
+          <label for="username" className={authFormStyles.label}>Username</label>
+          <div className={authFormStyles.inputAndSubtitle}>
             <input
               name="username"
               type="text"
               id="username"
               className={
                 (formErrors.username === "")
-                  ? `${registerStyles.input} ${registerStyles.validInput}` // valid
-                  : `${registerStyles.input} ${registerStyles.invalidInput}` // invalid
+                  ? `${authFormStyles.input} ${authFormStyles.validInput}` // valid
+                  : `${authFormStyles.input} ${authFormStyles.invalidInput}` // invalid
               }
               value={formValues.username}
               onChange={handleChange}
             />
             {
               (formErrors.username !== "")
-              && <p className={`${registerStyles.subtitle} ${registerStyles.invalidSubtitle}`}>{formErrors.username}</p>
+              && <p className={`${authFormStyles.subtitle} ${authFormStyles.invalidSubtitle}`}>{formErrors.username}</p>
             }
           </div>
         </div>
       </div>
 
-      <div className={registerStyles.formItem}>
-        <div className={registerStyles.inputContainer}>
-          <label for="email" className={registerStyles.label}>Email</label>
-          <div className={registerStyles.inputAndSubtitle}>
+      <div className={authFormStyles.formItem}>
+        <div className={authFormStyles.inputContainer}>
+          <label for="email" className={authFormStyles.label}>Email</label>
+          <div className={authFormStyles.inputAndSubtitle}>
             <input
               name="email"
               type="text"
               id="email"
               className={
                 (formErrors.email === "")
-                  ? `${registerStyles.input} ${registerStyles.validInput}` // valid
-                  : `${registerStyles.input} ${registerStyles.invalidInput}` // invalid
+                  ? `${authFormStyles.input} ${authFormStyles.validInput}` // valid
+                  : `${authFormStyles.input} ${authFormStyles.invalidInput}` // invalid
               }
               value={formValues.email}
               onChange={handleChange}
             />
             {
               (formErrors.email !== "")
-              && <p className={`${registerStyles.subtitle} ${registerStyles.invalidSubtitle}`}>{formErrors.email}</p>
+              && <p className={`${authFormStyles.subtitle} ${authFormStyles.invalidSubtitle}`}>{formErrors.email}</p>
             }
           </div>
         </div>
       </div>
 
-      <div className={registerStyles.formItem}>
-        <div className={registerStyles.inputContainer}>
-          <label for="password" className={registerStyles.label}>Password</label>
-          <div className={registerStyles.inputAndSubtitle}>
+      <div className={authFormStyles.formItem}>
+        <div className={authFormStyles.inputContainer}>
+          <label for="password" className={authFormStyles.label}>Password</label>
+          <div className={authFormStyles.inputAndSubtitle}>
             <input
               name="password"
               type="text"
               id="password"
               className={
                 (formErrors.password === "")
-                  ? `${registerStyles.input} ${registerStyles.validInput}` // valid
-                  : `${registerStyles.input} ${registerStyles.invalidInput}` // invalid
+                  ? `${authFormStyles.input} ${authFormStyles.validInput}` // valid
+                  : `${authFormStyles.input} ${authFormStyles.invalidInput}` // invalid
               }
               value={formValues.password}
               onChange={handleChange}
             />
             {
               (formErrors.password !== "")
-              && <p className={`${registerStyles.subtitle} ${registerStyles.invalidSubtitle}`}>{formErrors.password}</p>
+              && <p className={`${authFormStyles.subtitle} ${authFormStyles.invalidSubtitle}`}>{formErrors.password}</p>
             }
           </div>
         </div>
       </div>
 
-      <div className={registerStyles.formItem}>
+      <div className={authFormStyles.formItem}>
         <button
           disabled={submitDisabled}
           type="submit"
           className={
             (submitDisabled === true)
-              ? `${registerStyles.button} ${registerStyles.disabledButton}` // disabled
-              : `${registerStyles.button} ${registerStyles.enabledButton}` // enabled
+              ? `${authFormStyles.button} ${authFormStyles.disabledButton}` // disabled
+              : `${authFormStyles.button} ${authFormStyles.enabledButton}` // enabled
           }
         >
           Register
