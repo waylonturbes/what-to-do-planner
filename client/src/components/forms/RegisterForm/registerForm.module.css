@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  width: 100%;
 }
 .formTitle {
   padding: 1rem 0;
@@ -27,7 +28,7 @@
 }
 .input {
   height: 3rem;
-  width: 20rem;
+  width: 28rem;
   background-color: var(--white);
   border: 0.1rem solid var(--gray-800);
   outline: none;
@@ -35,7 +36,7 @@
   transition: 0.4s all;
 }
 .smallInput {
-  max-width: 14rem;
+  max-width: 18rem;
 }
 .input:focus {
   box-shadow: 0px 0px 5px 0px var(--gray-800);

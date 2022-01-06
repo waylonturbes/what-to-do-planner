@@ -140,55 +140,53 @@ function RegisterForm() {
       </div>
 
       <div className={registerStyles.formItem}>
-        <label for="email" className={
-          (formErrors.email === "")
-            ? "" // valid
-            : "" // invalid
-        }>Email</label>
-        <input
-          name="email"
-          type="email"
-          id="email"
-          className={
-            (formErrors.email === "")
-              ? "" // valid
-              : "" // invalid
-          }
-          value={formValues.email}
-          onChange={handleChange}
-        />
-        <p className="">
-          Valid email.
-        </p>
-        <p className="">
-          {formErrors.email}
-        </p>
+        <div className={registerStyles.inputContainer}>
+          <label for="email" className={registerStyles.label}>Email</label>
+          <div className={registerStyles.inputAndSubtitle}>
+            <input
+              name="email"
+              type="text"
+              id="email"
+              className={
+                (formErrors.email === "")
+                  ? `${registerStyles.input}` + ` ${registerStyles.validInput}` // valid
+                  : `${registerStyles.input}` + ` ${registerStyles.invalidInput}` // invalid
+              }
+              value={formValues.email}
+              onChange={handleChange}
+            />
+            {
+              (formErrors.email === "")
+                ? <p className={`${registerStyles.subtitle}` + ` ${registerStyles.validSubtitle}`}>Valid email.</p>
+                : <p className={`${registerStyles.subtitle}` + ` ${registerStyles.invalidSubtitle}`}>{formErrors.email}</p>
+            }
+          </div>
+        </div>
       </div>
 
       <div className={registerStyles.formItem}>
-        <label for="password" className={
-          (formErrors.password === "")
-            ? "" // valid
-            : "" // invalid
-        }>Password</label>
-        <input
-          name="password"
-          type="password"
-          id="password"
-          className={
-            (formErrors.password === "")
-              ? "" // valid
-              : "" // invalid
-          }
-          value={formValues.password}
-          onChange={handleChange}
-        />
-        <p className="">
-          Valid Password.
-        </p>
-        <p className="">
-          {formErrors.password}
-        </p>
+        <div className={registerStyles.inputContainer}>
+          <label for="password" className={registerStyles.label}>Password</label>
+          <div className={registerStyles.inputAndSubtitle}>
+            <input
+              name="password"
+              type="text"
+              id="password"
+              className={
+                (formErrors.password === "")
+                  ? `${registerStyles.input}` + ` ${registerStyles.validInput}` // valid
+                  : `${registerStyles.input}` + ` ${registerStyles.invalidInput}` // invalid
+              }
+              value={formValues.password}
+              onChange={handleChange}
+            />
+            {
+              (formErrors.password === "")
+                ? <p className={`${registerStyles.subtitle}` + ` ${registerStyles.validSubtitle}`}>Valid password.</p>
+                : <p className={`${registerStyles.subtitle}` + ` ${registerStyles.invalidSubtitle}`}>{formErrors.password}</p>
+            }
+          </div>
+        </div>
       </div>
 
       <div className={registerStyles.formItem}>
