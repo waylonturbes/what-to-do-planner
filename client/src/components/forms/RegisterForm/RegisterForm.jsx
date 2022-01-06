@@ -78,13 +78,13 @@ function RegisterForm() {
       <h3 className={registerStyles.formTitle}>Register</h3>
 
       <div className={registerStyles.formItem}>
-        <div className={registerStyles.multiInputContainer}>
-          <div className={registerStyles.inputAndLabel}>
+        <div className={registerStyles.inputContainer}>
+          <div className={registerStyles.inputAndSubtitle}>
             <input
               name="first_name"
               type="text"
               id="name"
-              className={registerStyles.input}
+              className={`${registerStyles.input} + ${registerStyles.smallInput}`}
               value={formValues.first_name}
               onChange={handleChange}
             />
@@ -95,12 +95,12 @@ function RegisterForm() {
               First Name
             </label>
           </div>
-          <div className={registerStyles.inputAndLabel}>
+          <div className={registerStyles.inputAndSubtitle}>
             <input
               name="last_name"
               type="text"
               id="last_name"
-              className={registerStyles.input}
+              className={`${registerStyles.input} + ${registerStyles.smallInput}`}
               value={formValues.last_name}
               onChange={handleChange}
             />
@@ -115,33 +115,28 @@ function RegisterForm() {
       </div>
 
       <div className={registerStyles.formItem}>
-        <label
-          for="username"
-          className={
-            (formErrors.username === "")
-              ? "" // valid
-              : "" // invalid
-          }>
-          Username
-        </label>
-        <input
-          name="username"
-          type="text"
-          id="username"
-          className={
-            (formErrors.username === "")
-              ? "" // valid
-              : "" // invalid
-          }
-          value={formValues.username}
-          onChange={handleChange}
-        />
-        <p className="">
-          Valid username.
-        </p>
-        <p className="">
-          {formErrors.username}
-        </p>
+        <div className={registerStyles.inputContainer}>
+          <label for="username" className={registerStyles.label}>Username</label>
+          <div className={registerStyles.inputAndSubtitle}>
+            <input
+              name="username"
+              type="text"
+              id="username"
+              className={
+                (formErrors.username === "")
+                  ? `${registerStyles.input}` + ` ${registerStyles.validInput}` // valid
+                  : `${registerStyles.input}` + ` ${registerStyles.invalidInput}` // invalid
+              }
+              value={formValues.username}
+              onChange={handleChange}
+            />
+            {
+              (formErrors.username === "")
+                ? <p className={`${registerStyles.subtitle}` + ` ${registerStyles.validSubtitle}`}>Valid username.</p>
+                : <p className={`${registerStyles.subtitle}` + ` ${registerStyles.invalidSubtitle}`}>{formErrors.username}</p>
+            }
+          </div>
+        </div>
       </div>
 
       <div className={registerStyles.formItem}>
