@@ -3,7 +3,21 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  width: 100%;
+}
+.formTitle {
+  padding-bottom: 1rem;
+}
+.formItem {
+  padding: 1rem 0;
+}
+
+/* NON-RESPONSIVE STYLING */
+
+/* .form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
 .formTitle {
   padding: 1rem 0;
@@ -84,3 +98,16 @@
 .disabledButton {
   opacity: 40%;
 }
+@media (max-width: 538px) {
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .input {
+    height: 3rem;
+    width: 22rem;
+  }
+} */
