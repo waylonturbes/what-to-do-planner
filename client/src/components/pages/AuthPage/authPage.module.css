@@ -2,8 +2,6 @@
   flex: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 .container {
   background-color: var(--gray-100);
@@ -13,6 +11,8 @@
   min-height: 40rem;
   justify-content: center;
   align-items: center;
+  flex: auto;
+  margin: 0 0;
 }
 .navLink {
   padding-left: 0.5rem;
@@ -22,7 +22,25 @@
   padding-top: 1rem;
   justify-content: center;
 }
-
+@media (max-width: 312px) {
+  .route {
+    justify-content: space-between;
+    width: 16rem;
+  }
+  .navLink {
+    align-self: center;
+  }
+  .navMessage {
+    width: 10rem;
+    text-align: center;
+  }
+}
+@media (min-width: 1024px) {
+  .page {
+    justify-content: center;
+    align-items: center;
+  }
+}
 /* NON-RESPONSIVE STYLING */
 
 /* .page {

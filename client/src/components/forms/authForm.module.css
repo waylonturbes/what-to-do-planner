@@ -10,7 +10,51 @@
 .formItem {
   padding: 1rem 0;
 }
+.inputContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.doubleInputContainer {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.doubleInputAndSubtitle{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.inputAndSubtitle {
+  display: flex;
+  flex-direction: column;
+}
+.label {
+  padding: 0.8rem 0;
+  align-self: flex-start;
+}
+.subtitleLabel {
+  order: 0;
+  padding: 0.8rem 0;
+  align-self: flex-start;
+}
+.input {
+  width: 16rem;
+}
+.smallInput {
+  order: 1;
+}
+@media (max-width: 312px) {
+  .page {
 
+  }
+}
+@media (min-width: 1024px) {
+
+}
 /* NON-RESPONSIVE STYLING */
 
 /* .form {

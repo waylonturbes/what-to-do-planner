@@ -13,7 +13,7 @@ function AuthPage() {
               <>
                 <LoginForm />
                 <p className={authPageStyles.route}>
-                  Don't have an account?
+                  <span className={authPageStyles.navMessage}>Don't have an account?</span>
                   <NavLink
                     className={authPageStyles.navLink}
                     to="/auth/register"
@@ -28,7 +28,7 @@ function AuthPage() {
               <>
                 <RegisterForm />
                 <p className={authPageStyles.route}>
-                  <span>Already have an account?</span>
+                  <span className={authPageStyles.navMessage}>Already have an account?</span>
                   <NavLink
                     className={authPageStyles.navLink}
                     to="/auth/login"

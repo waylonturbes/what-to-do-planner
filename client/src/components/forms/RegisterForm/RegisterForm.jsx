@@ -78,8 +78,8 @@ function RegisterForm() {
       <h2 className={authFormStyles.formTitle}>Register</h2>
 
       <div className={authFormStyles.formItem}>
-        <div className={authFormStyles.inputContainer}>
-          <div className={authFormStyles.inputAndSubtitle}>
+        <div className={authFormStyles.doubleInputContainer}>
+          <div className={authFormStyles.doubleInputAndSubtitle}>
             <input
               name="first_name"
               type="text"
@@ -90,12 +90,12 @@ function RegisterForm() {
             />
             <label
               for="first_name"
-              className={authFormStyles.subtitle}
+              className={authFormStyles.subtitleLabel}
             >
               First Name
             </label>
           </div>
-          <div className={authFormStyles.inputAndSubtitle}>
+          <div className={authFormStyles.doubleInputAndSubtitle}>
             <input
               name="last_name"
               type="text"
@@ -106,7 +106,7 @@ function RegisterForm() {
             />
             <label
               for="last_name"
-              className={authFormStyles.subtitle}
+              className={authFormStyles.subtitleLabel}
             >
               Last Name
             </label>
