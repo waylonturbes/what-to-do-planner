@@ -78,38 +78,45 @@ function RegisterForm() {
       <h2 className={authFormStyles.formTitle}>Register</h2>
 
       <div className={authFormStyles.formItem}>
-        <div className={authFormStyles.doubleInputContainer}>
-          <div className={authFormStyles.doubleInputAndSubtitle}>
+        <div className={authFormStyles.inputContainer}>
+          <label
+            for="first_name"
+            className={authFormStyles.label}
+          >
+            First Name
+          </label>
+          <div className={authFormStyles.inputAndSubtitle}>
             <input
               name="first_name"
               type="text"
               id="name"
-              className={`${authFormStyles.input} + ${authFormStyles.smallInput}`}
+              className={authFormStyles.input}
               value={formValues.first_name}
               onChange={handleChange}
             />
-            <label
-              for="first_name"
-              className={authFormStyles.subtitleLabel}
-            >
-              First Name
-            </label>
+            <div className={authFormStyles.subtitle}></div>
           </div>
-          <div className={authFormStyles.doubleInputAndSubtitle}>
+        </div>
+      </div>
+
+      <div className={authFormStyles.formItem}>
+        <div className={authFormStyles.inputContainer}>
+          <label
+            for="last_name"
+            className={authFormStyles.label}
+          >
+            Last Name
+          </label>
+          <div className={authFormStyles.inputAndSubtitle}>
             <input
               name="last_name"
               type="text"
               id="last_name"
-              className={`${authFormStyles.input} + ${authFormStyles.smallInput}`}
+              className={authFormStyles.input}
               value={formValues.last_name}
               onChange={handleChange}
             />
-            <label
-              for="last_name"
-              className={authFormStyles.subtitleLabel}
-            >
-              Last Name
-            </label>
+            <div className={authFormStyles.subtitle}></div>
           </div>
         </div>
       </div>
