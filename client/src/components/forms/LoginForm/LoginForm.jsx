@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { loginSchema } from "../../../schemas"
 import * as yup from "yup"
+import authFormStyles from "../authForm.module.css"
 
 const initialFormValues = {
   username: "",
@@ -72,95 +73,73 @@ function LoginForm() {
 
   return (
     <form
-      className="container-custom d-grid gap-1 mx-auto p-4 mb-5 bg-body"
+      className={authFormStyles.form}
       onSubmit={handleSubmit}
     >
-      {/* <label>
-        Username:
-        <input
-          name="username"
-          onChange={handleChange}
-          type="text"
-          value={formValues.username}
-        />
-      </label> */}
-      <div className="mb-3 form-floating">
-        <input
-          name="username"
-          type="text"
-          placeholder="Username"
-          className={
-            (formErrors.username === "")
-              ? "form-control is-valid floatingInput"
-              : "form-control is-invalid floatingInputInvalid"
-          }
-          value={formValues.username}
-          onChange={handleChange}
-        />
-        <label className={
-          (formErrors.username === "")
-            ? "floatingInput"
-            : "floatingInputInvalid"
-        }>Username</label>
-        <div className="valid-feedback">
-          Valid username.
-        </div>
-        <div className="invalid-feedback">
-          {formErrors.username}
+
+      <h2 className={authFormStyles.formTitle}>Login</h2>
+
+      <div className={authFormStyles.formItem}>
+        <div className={authFormStyles.inputContainer}>
+          <label for="username" className={authFormStyles.label}>Username</label>
+          <div className={authFormStyles.inputAndSubtitle}>
+            <input
+              name="username"
+              type="text"
+              id="username"
+              className={
+                (formErrors.username === "")
+                  ? `${authFormStyles.input} ${authFormStyles.validInput}` // valid
+                  : `${authFormStyles.input} ${authFormStyles.invalidInput}` // invalid
+              }
+              value={formValues.username}
+              onChange={handleChange}
+            />
+            {
+              (formErrors.username !== "")
+              && <p className={`${authFormStyles.subtitle} ${authFormStyles.invalidSubtitle}`}>{formErrors.username}</p>
+            }
+          </div>
         </div>
       </div>
 
-      <div className="mb-3 form-floating">
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          className={
-            (formErrors.password === "")
-              ? "form-control is-valid floatingInput"
-              : "form-control is-invalid floatingInputInvalid"
-          }
-          value={formValues.password}
-          onChange={handleChange}
-        />
-        <label className={
-          (formErrors.password === "")
-            ? "floatingPassword"
-            : "floatingPasswordInvalid"
-        }>Password</label>
-        <div className="valid-feedback">
-          Valid Password.
-        </div>
-        <div className="invalid-feedback">
-          {formErrors.password}
+      <div className={authFormStyles.formItem}>
+        <div className={authFormStyles.inputContainer}>
+          <label for="password" className={authFormStyles.label}>Password</label>
+          <div className={authFormStyles.inputAndSubtitle}>
+            <input
+              name="password"
+              type="text"
+              id="password"
+              className={
+                (formErrors.password === "")
+                  ? `${authFormStyles.input} ${authFormStyles.validInput}` // valid
+                  : `${authFormStyles.input} ${authFormStyles.invalidInput}` // invalid
+              }
+              value={formValues.password}
+              onChange={handleChange}
+            />
+            {
+              (formErrors.password !== "")
+              && <p className={`${authFormStyles.subtitle} ${authFormStyles.invalidSubtitle}`}>{formErrors.password}</p>
+            }
+          </div>
         </div>
       </div>
 
-      <div className="d-grid gap-2 col-6 mx-auto">
+      <div className={authFormStyles.formItem}>
         <button
           disabled={submitDisabled}
-          type="button"
+          type="submit"
           className={
             (submitDisabled === true)
-              ? "btn p-2 btn-dark btn-lg opacity-25"
-              : "btn p-2 btn-lg btn-success"
+              ? `${authFormStyles.button} ${authFormStyles.disabledButton}` // disabled
+              : `${authFormStyles.button} ${authFormStyles.enabledButton}` // enabled
           }
         >
           Login
         </button>
       </div>
-      {/* <label>
-        Password:
-        <input
-          name="password"
-          onChange={handleChange}
-          type="password"
-          value={formValues.password}
-        />
-      </label>
-      <button disabled={submitDisabled}>
-        Submit
-      </button> */}
     </form>
   )
 }

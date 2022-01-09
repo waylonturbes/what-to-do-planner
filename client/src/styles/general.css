@@ -1,3 +1,27 @@
+html {
+  font-size: 62.5%;
+  font-family: 'Noto Sans', sans-serif;
+}
+body {
+  background:linear-gradient(180deg, rgba(73, 80, 87, 1) 0%, rgba(52, 58, 64, 1) 80%, rgba(33, 37, 41, 1) 100%);
+  background-size: cover;
+}
 #root {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
+  box-sizing: border-box;
+  color: var(--dark);
+}
+h1 {
+  font-size: 3.8rem;
+}
+h2 {
+  font-size: 3rem;
+}
+h3 {
+  font-size: 2.4rem;
+}
+p, span, button, li, a, label, input {
+  font-size: 1.6rem;
 }

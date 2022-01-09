@@ -1,0 +1,51 @@
+.page {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  background-color: var(--gray-100);
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: auto;
+  margin: 0 0;
+}
+.navLink {
+  padding-left: 0.5rem;
+}
+.route {
+  display: flex;
+  padding-top: 1rem;
+  justify-content: center;
+}
+@media (max-width: 312px) {
+  .route {
+    justify-content: space-between;
+    width: 16rem;
+  }
+  .navLink {
+    align-self: center;
+  }
+  .navMessage {
+    width: 10rem;
+    text-align: center;
+  }
+}
+@media (min-width: 768px) {
+  .page {
+    justify-content: center;
+    align-items: center;
+  }
+  .container {
+    border: 0.3rem solid var(--gray-300);
+    padding: 4rem;
+    border-radius: 1.6rem;
+    outline: 0.2rem solid var(--gray-100);
+    outline-offset: 0.6rem;
+    box-shadow: 0px 0px 2rem 0.6rem var(--orange);
+    flex: none;
+  }
+}

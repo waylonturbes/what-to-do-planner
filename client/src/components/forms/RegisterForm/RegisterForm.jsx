@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react"
 import * as yup from "yup"
 
+import authFormStyles from "../authForm.module.css"
+
 import registerInitialValues from "./registerInitialValues.json"
 import { registerSchema } from "../../../schemas"
 
@@ -70,119 +72,133 @@ function RegisterForm() {
 
   return (
     <form
-      className="container-custom d-grid gap-1 mx-auto p-4 mb-5 bg-body"
+      className={authFormStyles.form}
       onSubmit={handleSubmit}
     >
-      <div className="mb-3 form-floating">
-        <input
-          name="first_name"
-          type="text"
-          className="form-control"
-          placeholder="First Name"
-          value={formValues.first_name}
-          onChange={handleChange}
-        />
-        <label className="floatingInput">First Name</label>
-      </div>
+      <h2 className={authFormStyles.formTitle}>Register</h2>
 
-      <div className="mb-3 form-floating">
-        <input
-          name="last_name"
-          type="text"
-          className="form-control"
-          placeholder="Last Name"
-          value={formValues.last_name}
-          onChange={handleChange}
-        />
-        <label className="floatingInput">Last Name</label>
-      </div>
-
-
-      <div className="mb-3 form-floating">
-        <input
-          name="username"
-          type="text"
-          placeholder="Username"
-          className={
-            (formErrors.username === "")
-              ? "form-control is-valid floatingInput"
-              : "form-control is-invalid floatingInputInvalid"
-          }
-          value={formValues.username}
-          onChange={handleChange}
-        />
-        <label className={
-          (formErrors.username === "")
-            ? "floatingInput"
-            : "floatingInputInvalid"
-        }>Username</label>
-        <div className="valid-feedback">
-          Valid username.
-        </div>
-        <div className="invalid-feedback">
-          {formErrors.username}
+      <div className={authFormStyles.formItem}>
+        <div className={authFormStyles.inputContainer}>
+          <label
+            for="first_name"
+            className={authFormStyles.label}
+          >
+            First Name
+          </label>
+          <div className={authFormStyles.inputAndSubtitle}>
+            <input
+              name="first_name"
+              type="text"
+              id="name"
+              className={authFormStyles.input}
+              value={formValues.first_name}
+              onChange={handleChange}
+            />
+          </div>
         </div>
       </div>
 
-      <div className="mb-3 form-floating">
-        <input
-          name="email"
-          type="email"
-          placeholder="Email"
-          className={
-            (formErrors.email === "")
-              ? "form-control is-valid floatingInput"
-              : "form-control is-invalid floatingInputInvalid"
-          }
-          value={formValues.email}
-          onChange={handleChange}
-        />
-        <label className={
-          (formErrors.email === "")
-            ? "floatingInput"
-            : "floatingInputInvalid"
-        }>Email</label>
-        <div className="valid-feedback">
-          Valid email.
-        </div>
-        <div className="invalid-feedback">
-          {formErrors.email}
+      <div className={authFormStyles.formItem}>
+        <div className={authFormStyles.inputContainer}>
+          <label
+            for="last_name"
+            className={authFormStyles.label}
+          >
+            Last Name
+          </label>
+          <div className={authFormStyles.inputAndSubtitle}>
+            <input
+              name="last_name"
+              type="text"
+              id="last_name"
+              className={authFormStyles.input}
+              value={formValues.last_name}
+              onChange={handleChange}
+            />
+          </div>
         </div>
       </div>
 
-      <div className="mb-3 form-floating">
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          className={
-            (formErrors.password === "")
-              ? "form-control is-valid floatingInput"
-              : "form-control is-invalid floatingInputInvalid"
-          }
-          value={formValues.password}
-          onChange={handleChange}
-        />
-        <label className={
-          (formErrors.password === "")
-            ? "floatingPassword"
-            : "floatingPasswordInvalid"
-        }>Password</label>
-        <div className="valid-feedback">
-          Valid Password.
-        </div>
-        <div className="invalid-feedback">
-          {formErrors.password}
+      <div className={authFormStyles.formItem}>
+        <div className={authFormStyles.inputContainer}>
+          <label for="username" className={authFormStyles.label}>Username</label>
+          <div className={authFormStyles.inputAndSubtitle}>
+            <input
+              name="username"
+              type="text"
+              id="username"
+              className={
+                (formErrors.username === "")
+                  ? `${authFormStyles.input} ${authFormStyles.validInput}` // valid
+                  : `${authFormStyles.input} ${authFormStyles.invalidInput}` // invalid
+              }
+              value={formValues.username}
+              onChange={handleChange}
+            />
+            {
+              (formErrors.username !== "")
+              && <p className={`${authFormStyles.subtitle} ${authFormStyles.invalidSubtitle}`}>{formErrors.username}</p>
+            }
+          </div>
         </div>
       </div>
-      <div className="d-grid gap-2 col-6 mx-auto">
+
+      <div className={authFormStyles.formItem}>
+        <div className={authFormStyles.inputContainer}>
+          <label for="email" className={authFormStyles.label}>Email</label>
+          <div className={authFormStyles.inputAndSubtitle}>
+            <input
+              name="email"
+              type="text"
+              id="email"
+              className={
+                (formErrors.email === "")
+                  ? `${authFormStyles.input} ${authFormStyles.validInput}` // valid
+                  : `${authFormStyles.input} ${authFormStyles.invalidInput}` // invalid
+              }
+              value={formValues.email}
+              onChange={handleChange}
+            />
+            {
+              (formErrors.email !== "")
+              && <p className={`${authFormStyles.subtitle} ${authFormStyles.invalidSubtitle}`}>{formErrors.email}</p>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div className={authFormStyles.formItem}>
+        <div className={authFormStyles.inputContainer}>
+          <label for="password" className={authFormStyles.label}>Password</label>
+          <div className={authFormStyles.inputAndSubtitle}>
+            <input
+              name="password"
+              type="text"
+              id="password"
+              className={
+                (formErrors.password === "")
+                  ? `${authFormStyles.input} ${authFormStyles.validInput}` // valid
+                  : `${authFormStyles.input} ${authFormStyles.invalidInput}` // invalid
+              }
+              value={formValues.password}
+              onChange={handleChange}
+            />
+            {
+              (formErrors.password !== "")
+              && <p className={`${authFormStyles.subtitle} ${authFormStyles.invalidSubtitle}`}>{formErrors.password}</p>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div className={authFormStyles.formItem}>
         <button
           disabled={submitDisabled}
-          type="button"
+          type="submit"
           className={
             (submitDisabled === true)
-              ? "btn p-2 btn-dark btn-lg opacity-25"
-              : "btn p-2 btn-lg btn-success"
+              ? `${authFormStyles.button} ${authFormStyles.disabledButton}` // disabled
+              : `${authFormStyles.button} ${authFormStyles.enabledButton}` // enabled
           }
         >
           Register
