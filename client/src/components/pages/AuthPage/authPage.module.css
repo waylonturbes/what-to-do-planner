@@ -5,10 +5,9 @@
 }
 .container {
   background-color: var(--gray-100);
-  padding: 3rem;
+  padding: 4rem;
   display: flex;
   flex-direction: column;
-  min-height: 40rem;
   justify-content: center;
   align-items: center;
   flex: auto;

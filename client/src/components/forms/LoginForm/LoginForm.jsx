@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { loginSchema } from "../../../schemas"
 import * as yup from "yup"
+import authFormStyles from "../authForm.module.css"
 
 const initialFormValues = {
   username: "",
@@ -72,71 +73,73 @@ function LoginForm() {
 
   return (
     <form
-      className=""
+      className={authFormStyles.form}
       onSubmit={handleSubmit}
     >
-      <h3>Login</h3>
-      <label for="username" className={
-        (formErrors.username === "")
-          ? "" // valid
-          : "" // invalid
-      }>Username</label>
-      <input
-        name="username"
-        type="text"
-        id="username"
-        placeholder="Username"
-        className={
-          (formErrors.username === "")
-            ? "" // valid
-            : "" // invalid
-        }
-        value={formValues.username}
-        onChange={handleChange}
-      />
-      <p className="">
-        Valid username.
-      </p>
-      <p className="">
-        {formErrors.username}
-      </p>
 
-      <label for="password" className={
-        (formErrors.password === "")
-          ? "" // valid
-          : "" // invalid
-      }>Password</label>
-      <input
-        name="password"
-        type="password"
-        id="password"
-        placeholder="Password"
-        className={
-          (formErrors.password === "")
-            ? "" // valid
-            : "" // invalid
-        }
-        value={formValues.password}
-        onChange={handleChange}
-      />
-      <p className="">
-        Valid Password.
-      </p>
-      <p className="">
-        {formErrors.password}
-      </p>
+      <h2 className={authFormStyles.formTitle}>Login</h2>
 
-      <button
-        disabled={submitDisabled}
-        type="submit"
-        className={
-          (submitDisabled === true)
-            ? "" // disabled
-            : "" // enabled
-        }
-      >
-        Login
-      </button>
+      <div className={authFormStyles.formItem}>
+        <div className={authFormStyles.inputContainer}>
+          <label for="username" className={authFormStyles.label}>Username</label>
+          <div className={authFormStyles.inputAndSubtitle}>
+            <input
+              name="username"
+              type="text"
+              id="username"
+              className={
+                (formErrors.username === "")
+                  ? `${authFormStyles.input} ${authFormStyles.validInput}` // valid
+                  : `${authFormStyles.input} ${authFormStyles.invalidInput}` // invalid
+              }
+              value={formValues.username}
+              onChange={handleChange}
+            />
+            {
+              (formErrors.username !== "")
+              && <p className={`${authFormStyles.subtitle} ${authFormStyles.invalidSubtitle}`}>{formErrors.username}</p>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div className={authFormStyles.formItem}>
+        <div className={authFormStyles.inputContainer}>
+          <label for="password" className={authFormStyles.label}>Password</label>
+          <div className={authFormStyles.inputAndSubtitle}>
+            <input
+              name="password"
+              type="text"
+              id="password"
+              className={
+                (formErrors.password === "")
+                  ? `${authFormStyles.input} ${authFormStyles.validInput}` // valid
+                  : `${authFormStyles.input} ${authFormStyles.invalidInput}` // invalid
+              }
+              value={formValues.password}
+              onChange={handleChange}
+            />
+            {
+              (formErrors.password !== "")
+              && <p className={`${authFormStyles.subtitle} ${authFormStyles.invalidSubtitle}`}>{formErrors.password}</p>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div className={authFormStyles.formItem}>
+        <button
+          disabled={submitDisabled}
+          type="submit"
+          className={
+            (submitDisabled === true)
+              ? `${authFormStyles.button} ${authFormStyles.disabledButton}` // disabled
+              : `${authFormStyles.button} ${authFormStyles.enabledButton}` // enabled
+          }
+        >
+          Login
+        </button>
+      </div>
     </form>
   )
 }
