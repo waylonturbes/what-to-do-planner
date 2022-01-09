@@ -94,7 +94,6 @@ function RegisterForm() {
               value={formValues.first_name}
               onChange={handleChange}
             />
-            <div className={authFormStyles.subtitle}></div>
           </div>
         </div>
       </div>
@@ -116,7 +115,6 @@ function RegisterForm() {
               value={formValues.last_name}
               onChange={handleChange}
             />
-            <div className={authFormStyles.subtitle}></div>
           </div>
         </div>
       </div>

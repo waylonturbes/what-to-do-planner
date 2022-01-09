@@ -5,7 +5,7 @@
   justify-content: space-evenly;
 }
 .formTitle {
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
 }
 .formItem {
   padding: 1rem 0;
@@ -81,109 +81,3 @@
 .disabledButton {
   opacity: 40%;
 }
-@media (max-width: 312px) {
-  
-}
-@media (min-width: 1024px) {
-
-}
-/* NON-RESPONSIVE STYLING */
-
-/* .form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-}
-.formTitle {
-  padding: 1rem 0;
-}
-.formItem {
-  padding: 1rem 0;
-  width: 100%;
-}
-.inputContainer {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  align-items: center;
-}
-.label {
-  padding: 0.8rem 0;
-  align-self: flex-start;
-}
-.inputAndSubtitle {
-  display: flex;
-  flex-direction: column;
-}
-.input {
-  height: 3rem;
-  width: 28rem;
-  background-color: var(--white);
-  border: 0.1rem solid var(--gray-800);
-  outline: none;
-  border-radius: 0.6rem;
-  transition: 0.4s all;
-}
-.smallInput {
-  max-width: 18rem;
-}
-.input:focus {
-  box-shadow: 0px 0px 5px 0px var(--gray-800);
-}
-.validInput {
-  border: 0.1rem solid var(--success);
-}
-.validInput:focus {
-  box-shadow: 0px 0px 5px 0px var(--success);
-}
-.invalidInput {
-  border: 0.1rem solid var(--danger);
-}
-.invalidInput:focus {
-  box-shadow: 0px 0px 5px 0px var(--danger);
-}
-.subtitle {
-  padding: 0.6rem 0;
-  font-size: 1.4rem;
-  color: var(--gray-800);
-}
-.validSubtitle {
-  color: var(--success);
-}
-.invalidSubtitle {
-  color: var(--danger);
-}
-.button {
-  text-align: center;
-  padding: 1.2rem;
-  border: none;
-  width: 100%;
-  background: var(--gray-800);
-  color: var(--light);
-  border-radius: 1rem;
-  transition: 0.4s all;
-}
-.button:hover {
-  cursor: pointer;
-  box-shadow: 0px 0px 7px 0px var(--gray-800);
-}
-.enabledButton {
-  background: var(--success);
-}
-.disabledButton {
-  opacity: 40%;
-}
-@media (max-width: 538px) {
-  .form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-  .input {
-    height: 3rem;
-    width: 22rem;
-  }
-} */
